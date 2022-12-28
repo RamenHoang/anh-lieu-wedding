@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title><%=__('bride_groom_get_married')%></title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/photoswipe.css" />
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="<%=__('wedding_date')%>. <%=__('bride_groom_get_married')%>" />
+    <meta name="description"
+        content="<%=__('foreword')%>" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%=http_host%>" />
+    <meta property="og:title" content="<%=__('wedding_date')%>. <%=__('bride_groom_get_married')%>" />
+    <meta property="og:description"
+        content="<%=__('foreword')%>" />
+    <meta property="og:image" content="/photos/wedding/4.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="<%=http_host%>" />
+    <meta property="twitter:title" content="<%=__('wedding_date')%>. <%=__('bride_groom_get_married')%>" />
+    <meta property="twitter:description"
+        content="<%=__('foreword')%>" />
+    <meta property="twitter:image" content="/photos/wedding/4.jpg" />
+</head>
+
+<body>
+    <div id="top"></div>
+    <section id="front">
+        <div class="curtain"></div>
+        <div class="wrap center">
+            <h1><%=__('wedding_date')%></h1>
+            <h2><%=__('bride_groom_name')%> </h2>
+            <p><%=__('we_are_get_married')%> </p>
+        </div>
+
+        <div class="overlay"></div>
+
+        <a class="go-to go-to-wedding" href="#wedding-photo" data-margin-top="120">
+            <img src="/static/wedding-couple-icon.svg" />
+            <%= __('wedding_photos') %>
+        </a>
+
+        <a class="go-to go-to-welcome" href="#welcome">
+            <img src="/static/map-icon.svg" />
+            <%= __('way_to_come') %>
+        </a>
+    </section>
+
+    <section id="story-each">
+        <div class="wrap clearfix">
+            <div class="content groom">
+                <h3><%= __('child_groom') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/1992-row1-1.png">
+                                <img src="/static/placeholder.png" data-ratio="0.6929"
+                                    data-src="/photos/1992-row1-1.png" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/1992-row1-2.png">
+                                <img src="/static/placeholder.png" data-ratio="1.115"
+                                    data-src="/photos/1992-row1-2.png" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('child_groom_description') %></p>
+            </div>
+
+            <div class="content bride">
+                <h3><%= __('child_bride') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/1994-row1-1.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="0.75"
+                                    data-src="/photos/1994-row1-1.jpeg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/1994-row1-2.png">
+                                <img src="/static/placeholder.png" data-ratio="1.0000"
+                                    data-src="/photos/1994-row1-2.png" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('child_bride_description') %></p>
+            </div>
+
+            <div class="content groom">
+                <h3><%= __('young_groom') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/1996-row1-1.jpg">
+                                <img src="/static/placeholder.png" data-ratio="1.0"
+                                    data-src="/photos/1996-row1-1.jpg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/1996-row1-2.jpg">
+                                <img src="/static/placeholder.png" data-ratio="0.636"
+                                    data-src="/photos/1996-row1-2.jpg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/1996-row1-3.jpg">
+                                <img src="/static/placeholder.png" data-ratio="0.75"
+                                    data-src="/photos/1996-row1-3.jpg" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('young_groom_description') %></p>
+            </div>
+
+            <div class="content bride">
+                <h3><%= __('young_bride') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2002-row1-1.jpg">
+                                <img src="/static/placeholder.png" data-ratio="1.695"
+                                    data-src="/photos/2002-row1-1.jpg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/2002-row1-2.png">
+                                <img src="/static/placeholder.png" data-ratio="0.6667"
+                                    data-src="/photos/2002-row1-2.png" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('young_bride_description') %></p>
+            </div>
+
+            <div class="content groom">
+                <h3><%= __('teen_groom') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2011-row1.jpg">
+                                <img src="/static/placeholder.png" data-ratio="0.75"
+                                    data-src="/photos/2011-row1.jpg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/2011-row2-1.jpg">
+                                <img src="/static/placeholder.png" data-ratio="1.3352"
+                                    data-src="/photos/2011-row2-1.jpg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/2011-row2-2.png">
+                                <img src="/static/placeholder.png" data-ratio="2.0671"
+                                    data-src="/photos/2011-row2-2.png" />
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2011-row3.jpg">
+                                <img src="/static/placeholder.png" data-ratio="1.0"
+                                    data-src="/photos/2011-row3.jpg" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('teen_groom_description') %></p>
+            </div>
+
+            <div class="content bride">
+                <h3><%= __('teen_bride') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2013-row1-1.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="1.3333"
+                                    data-src="/photos/2013-row1-1.jpeg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/2013-row1-2.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="0.7967"
+                                    data-src="/photos/2013-row1-2.jpeg" />
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2013-row2.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="1.0"
+                                    data-src="/photos/2013-row2.jpeg" />
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2013-row3-1.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="0.5618"
+                                    data-src="/photos/2013-row3-1.jpeg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/2013-row3-2.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="1.3333"
+                                    data-src="/photos/2013-row3-2.jpeg" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('teen_bride_description') %></p>
+            </div>
+        </div>
+
+        <div class="wrap clearfix">
+            <div class="content together">
+                <h3><%= __('date_become_couple') %></h3>
+
+                <div class="photoset">
+                    <div class="photoset-row">
+                        <figure class="photoset-item">
+                            <a href="/photos/2017-row1-1.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="0.75"
+                                    data-src="/photos/2017-row1-1.jpeg" />
+                            </a>
+                        </figure>
+                        <figure class="photoset-item">
+                            <a href="/photos/2017-row1-2.jpeg">
+                                <img src="/static/placeholder.png" data-ratio="0.75"
+                                    data-src="/photos/2017-row1-2.jpeg" />
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <p><%= __('date_become_couple_description') %></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="playground-holder">
+        <div id="playground">
+            <div id="groom-thumb" class="thumb groom">
+                <span class="tf xsmall baby"></span>
+            </div>
+
+            <div id="bride-thumb" class="thumb bride">
+                <span class="tf xsmall baby"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="story-together">
+        <div class="photoset">
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row1-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.5118"
+                            data-src="/photos/together/row1-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row1-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.3333"
+                            data-src="/photos/together/row1-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row2-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row2-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row2-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.2624"
+                            data-src="/photos/together/row2-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row3.jpg">
+                        <img src="/static/placeholder.png" data-ratio="1.8444" data-src="/photos/together/row3.jpg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row4-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.3333"
+                            data-src="/photos/together/row4-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row5-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row5-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row6-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.6667"
+                            data-src="/photos/together/row6-2.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row11.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.3333"
+                            data-src="/photos/together/row11.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row7-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.0" data-src="/photos/together/row7-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row7-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.0" data-src="/photos/together/row7-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row8.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.5" data-src="/photos/together/row8.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row9-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.6667"
+                            data-src="/photos/together/row9-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row9-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.6233"
+                            data-src="/photos/together/row9-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row10-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row10-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row10-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.0"
+                            data-src="/photos/together/row10-2.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row10-3.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row10-3.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row21-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.7076"
+                            data-src="/photos/together/row21-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row12-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row12-1.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row13-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row13-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row13-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.7156"
+                            data-src="/photos/together/row13-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row14-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row14-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row14-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row14-2.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row16-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row16-1.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row16-3.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.7753"
+                            data-src="/photos/together/row16-3.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row18-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row18-1.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row15.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.5" data-src="/photos/together/row15.jpeg" />
+                    </a>
+                </figure>
+            </div>
+
+            <div class="photoset-row">
+                <figure class="photoset-item">
+                    <a href="/photos/together/row20-2.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="0.75"
+                            data-src="/photos/together/row20-2.jpeg" />
+                    </a>
+                </figure>
+                <figure class="photoset-item">
+                    <a href="/photos/together/row20-1.jpeg">
+                        <img src="/static/placeholder.png" data-ratio="1.3333"
+                            data-src="/photos/together/row20-1.jpeg" />
+                    </a>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section id="black-to-pink">
+        <div class="icon-tray">
+            <span class="tf xsmall couple"></span>
+        </div>
+
+        <p><%= __('and') %></p>
+        <p><%= __('wedding_date') %></p>
+        <p><%= __('date_count') %></p>
+        <p>&nbsp;</p>
+
+        <span class="tf wedding-hall wedding-icon"></span>
+    </section>
+
+    <div id="pink-background">
+        <section id="wedding-photo">
+            <p>
+                <span class="tf xsmall man-with-tuxido"></span>
+                <span class="tf xsmall woman-with-veil"></span>
+            </p>
+            <p>&nbsp;</p>
+            <p><%= __('be_married_title') %></p>
+
+            <div class="photoset">
+                <div class="photoset-row">
+                    <figure class="photoset-item">
+                        <a href="/photos/wedding/3.jpg">
+                            <img src="/static/placeholder-pink.png" data-ratio="1.5001"
+                                data-src="/photos/wedding/3.jpg" />
+                        </a>
+                    </figure>
+                </div>
+                <div class="photoset-row">
+                    <figure class="photoset-item">
+                        <a href="/photos/wedding/1.jpg">
+                            <img src="/static/placeholder-pink.png" data-ratio="1.5"
+                                data-src="/photos/wedding/1.jpg" />
+                        </a>
+                    </figure>
+                    <figure class="photoset-item">
+                        <a href="/photos/wedding/2.jpg">
+                            <img src="/static/placeholder-pink.png" data-ratio="1.5"
+                                data-src="/photos/wedding/2.jpg" />
+                        </a>
+                    </figure>
+                </div>
+                <div class="photoset-row">
+                    <figure class="photoset-item">
+                        <a href="/photos/wedding/4.jpg">
+                            <img src="/static/placeholder-pink.png" data-ratio="1.5"
+                                data-src="/photos/wedding/4.jpg" />
+                        </a>
+                    </figure>
+                </div>
+                <div class="photoset-row">
+                    <figure class="photoset-item">
+                        <a href="/photos/wedding/5.jpg">
+                            <img src="/static/placeholder-pink.png" data-ratio="1.5"
+                                data-src="/photos/wedding/5.jpg" />
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="welcome">
+            <h4><%= __('writing_poem') %></h4>
+            <p>&nbsp;</p>
+
+            <p><%= __('poem_line_1') %></p>
+            <p><%= __('poem_line_2') %></p>
+            <p><%= __('poem_line_3') %></p>
+            <p><%= __('poem_line_4') %></p>
+            <p><%= __('poem_line_5') %></p>
+            <p>&nbsp;</p>
+
+            <p>
+                <%= __('groom_and_parent') %>
+            </p>
+            <p>
+                <%= __('bride_and_parent') %>
+            </p>
+        </section>
+
+        <section id="location">
+            <h4><%= __('way_to_come') %></h4>
+            <img id="image-map" src="map/map.png" />
+
+            <p><b><%= __('wedding_date_time') %></b></p>
+            <p><b><%= __('wedding_hall') %></b></p>
+            <p>&nbsp;</p>
+            <p><a href="tel:<%= __('tel_contact') %>" class="tel"><%= __('tel_contact') %></a></p>
+            <p>&nbsp;</p>
+            <p><%= __('wedding_hall_address') %></p>
+            <p><small><%= __('wedding_hall_address_notice') %></small></p>
+
+            <ul>
+                <li>
+                    <a href="<%= google_map_link %>" target="_blank"><%= __('view_on_google_map') %></a>
+                </li>
+                <li>
+                    <a href="<%= map_link %>" target="_blank"><%= __('download_map') %></a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- <section id="congratulatory">
+            <h4>마음 전하는 곳</h4>
+
+            <table>
+                <tr>
+                    <td><b>신랑측</b></td>
+                    <td>
+                        <span>하나은행 155-910386-87207 (이재영)</span>
+                    </td>
+                    <td>
+                        <button class="copy-btn" data-clipboard-text="155-910386-87207">복사</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>신부측</b></td>
+                    <td>
+                        <span>국민은행 535502-04-098215 (조소영)</span>
+                    </td>
+                    <td>
+                        <button class="copy-btn" data-clipboard-text="535502-04-098215">복사</button>
+                    </td>
+                </tr>
+            </table>
+        </section> -->
+
+        <section id="thanks-to">
+            <p>
+                <span class="tf xsmall man-with-tuxido"></span>
+                <span class="tf xsmall woman-with-veil"></span>
+            </p>
+
+            <p><%= __('groom_bride_say_thankyou_to_guest') %></p>
+            <p><%= __('groom_bride_promise') %></p>
+            <p>&nbsp;</p>
+
+            <a class="share" href="#"><%= __('share_happy_new')  %></a>
+        </section>
+    </div>
+
+    <a class="go-to go-to-top" href="#top">
+        <img src="/static/top-icon.svg" />
+        <%= __('share') %>
+    </a>
+
+    <a class="share" href="#">
+        <img src="/static/share-icon.svg" />
+        <%= __('go_top') %>
+    </a>
+
+    <script type="text/javascript" charset="UTF-8" src="/static/script.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/static/clipboard.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/static/photoswipe.umd.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/static/photoswipe-lightbox.umd.min.js"></script>
+    <script type="text/javascript">
+        // lightbox
+        var lightbox = new PhotoSwipeLightbox({
+            gallery: '.photoset',
+            children: 'a',
+            pswpModule: PhotoSwipe,
+            loop: false,
+            counter: false,
+            arrowPrev: false,
+            arrowNext: false,
+            zoom: false
+        });
+        lightbox.init();
+
+        // cliipboard.js
+        // var clipboard = new ClipboardJS('.copy-btn');
+        // clipboard.on('success', function (e) {
+        //     alert("'" + e.text + "' 복사 되었습니다.");
+        //     e.clearSelection();
+        // });
+    </script>
+</body>
+
+</html>
