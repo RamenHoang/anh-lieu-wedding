@@ -1,0 +1,627 @@
+@import url('./pretendard.css');
+@import url('./toss-face.css');
+
+:root {
+  --main-background: rgba(41, 47, 51, 1);
+  --main-color: #a9abad;
+  --playground-background: linear-gradient( 0deg, 
+    var(--main-background) 0%, 
+    var(--main-background) 80%, 
+    rgba(41, 47, 51, 0.85) 85%, 
+    rgba(41, 47, 51, 0) 100%
+  );
+  --photoset-item-margin: 2px;
+  --pink-background: rgba(241, 232, 223, 1);
+  --pink-color: rgb(32, 66, 49);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  font-size: 36px;
+  color: var(--main-color);
+  background: var(--main-background);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* Pretendard 추천 글꼴 순서 */
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+section { position: relative; }
+
+section .center {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+section .wrap {
+  width: 90%!important;
+  max-width: 1400px;
+  min-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+section .clearfix:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+
+#front {
+  height: 100vh;
+}
+
+#front .curtain {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+#front .curtain::before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url('./front.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: .8;
+  content: '';
+}
+
+#front h1 {
+  line-height: 4rem;
+  font-size: 3rem;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+#front h2 {
+  padding: .2rem 0;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#front p {
+  line-height: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+#front .overlay {
+  position: absolute;
+  background: linear-gradient(
+    rgba(41,47,51,0) 0,
+    rgba(41,47,51,.5) 33%,
+    rgba(41,47,51,.77) 70%,
+    rgba(41,47,51,1) 100%
+  );
+  height: 40vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#front .next {
+  position: absolute;
+  display: inline-block;
+  width: 3rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  font-size: .8rem;
+  text-align: center;
+
+  right: 5%;
+
+  top: 50%;
+  transform: translateY(-50%);
+  padding-top: 2.2rem;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#front .next span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.2rem;
+  height: 2rem;
+  margin-left: -.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2rem;
+  box-sizing: border-box;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate(0, 1rem);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#front .next span::before {
+  position: absolute;
+  top: .4rem;
+  left: 50%;
+  content: '';
+  width: .2rem;
+  height: .2rem;
+  margin-left: -.1rem;
+  background: white;
+  border-radius: 100%;
+  animation: scroll 2s infinite;
+  box-sizing: border-box;
+}
+
+#front a.go-to-wedding {
+  display: block;
+  font-size: .8rem;
+  line-height: 1.4rem;
+  width: 3rem;
+  height: 1.4rem;
+
+  padding-top: 2.2rem;
+
+  position: absolute;
+  bottom: 15.5vh;
+  left: 15%;
+}
+
+#front a.go-to-wedding img {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1.5rem;
+  color: #fff;
+}
+
+#front a.go-to-welcome {
+  display: block;
+  font-size: .8rem;
+  line-height: 1.4rem;
+  width: 3rem;
+  height: 1.4rem;
+
+  padding-top: 2.2rem;
+
+  position: absolute;
+  bottom: 15.5vh;
+  right: 15%;
+}
+
+#front a.go-to-welcome img {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1.5rem;
+  color: #fff;
+}
+
+#story-each {
+  margin-top: 5vh;
+  padding-bottom: 3vh;
+}
+
+#story-each .content {
+  width: 75%;
+  margin-top: 15vh;
+}
+
+#story-each .content:first-child {
+  margin-top: 10vh;
+}
+
+#story-each .groom {
+  float: left;
+}
+
+#story-each .bride {
+  float: right;
+}
+#story-each .bride h3 {
+  text-align: right;
+}
+
+#story-each .together {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#story-each .together h3 {
+  text-align: center;
+}
+
+#story-each h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  padding: 0 0 1rem 0;
+  margin: 0;
+}
+
+#story-each .photoset .photoset-row:first-child .photoset-item:first-child img {
+  border-top-left-radius: 12px;
+}
+
+#story-each .photoset .photoset-row:first-child .photoset-item:last-child img {
+  border-top-right-radius: 12px;
+}
+
+#story-each .photoset .photoset-row:last-child .photoset-item:first-child img {
+  border-bottom-left-radius: 12px;
+}
+
+#story-each .photoset .photoset-row:last-child .photoset-item:last-child img {
+  border-bottom-right-radius: 12px;
+}
+
+#story-each p {
+  line-height: 1.5rem;
+  padding: .5rem 0;
+  margin: 0;
+}
+
+#playground-holder {
+  height: 170px;
+}
+
+#playground {
+  width: 100%;
+  height: 160px;
+  z-index: 2;
+  left: 0;
+  position: relative;
+}
+
+#playground .thumb {
+  display: block;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  margin: 0;
+  padding: 50px 40px 30px;
+  transition: right .25s ease-in-out, left .25s ease-in-out, transform .25s ease-in-out;
+}
+
+#playground .thumb.groom { 
+  left: 0;
+}
+#playground .thumb.bride { 
+  right: 0;
+}
+
+.on-story-each #playground {
+  position: fixed;
+  bottom: -1px;
+  background: var(--playground-background);
+}
+
+#story-together {
+  padding: 10vh 0 0;
+  min-height: 100vh;
+}
+
+#black-to-pink {
+  color: var(--main-color);
+  text-align: center;
+  font-size: .8rem;
+  padding: 5vh 0;
+}
+
+#black-to-pink .icon-tray {
+  padding: 0 0 5vh;
+}
+
+#black-to-pink .wedding-icon {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#pink-background {
+  background: var(--pink-background);
+  color: var(--pink-color);
+}
+
+
+#wedding-photo {
+  padding: 10vh 0 5vh;
+  font-size: .8rem;
+  text-align: center;
+}
+
+
+#wedding-photo .photoset {
+  margin-top: 5vh;
+}
+
+#welcome {
+  padding: 5vh 0 5vh;
+}
+
+#welcome h4 {
+  color: var(--pink-color);
+  text-align: center;
+}
+
+#welcome p {
+  font-size: .8rem;
+  line-height: 1.2rem;
+  margin: 0;
+  text-align: center;
+}
+
+#location {
+  padding: 5vh 100px;
+}
+
+#location h4 {
+  color: var(--pink-color);
+  text-align: center;
+}
+
+#location #image-map {
+  width: 95%;
+  margin: 50px auto;
+  display: block;
+}
+
+#location p {
+  font-size: .8rem;
+  line-height: 1.2rem;
+  margin: 0;
+  text-align: center;
+}
+
+#location .tel {
+  text-decoration: underline;
+  color: var(--pink-color);
+}
+
+#location ul {
+  margin: 50px auto 0;
+  padding: 0;
+  width: 80%;
+
+  list-style: none;
+}
+
+#location ul:after {
+  clear: both;
+  content: "";
+  display: block;
+  visibility: hidden;
+}
+
+#location ul li {
+  float: left;
+  width: 46%;
+  padding: 0 2%;
+}
+
+
+#location ul li a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  background: #204231;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  line-height: 2rem;
+}
+
+#location ul li a:hover {
+  background: #0c7c44;
+  border: 1px solid #4f4f4f;
+}
+
+
+#congratulatory {
+  padding: 5vh 0;
+}
+
+#congratulatory h4 {
+  color: var(--pink-color);
+  text-align: center;
+}
+
+#congratulatory table {
+  font-size: .8rem;
+  margin: 2vh auto 0;
+}
+
+#congratulatory table td {
+  line-height: 1.5rem;
+  padding: .5rem 1vh;
+}
+
+
+#congratulatory table td .copy-btn {
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #204231;
+  color: #ffffff;
+  line-height: 1rem;
+  padding: .25rem .5rem;
+  margin: 0 0 0 .5rem;;
+  vertical-align: top;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+#congratulatory table td .copy-btn:hover {
+  background: #0c7c44;
+  border: 1px solid #4f4f4f;
+}
+
+#thanks-to {
+  padding: 5vh 0;
+  font-size: .8rem;
+  text-align: center;
+}
+
+#thanks-to .rose {
+  color: #FF0080;
+}
+
+#thanks-to a {
+  display: block;
+}
+
+#thanks-to .share {
+  display: inline-block;
+  margin: 0 auto 5vh;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #204231;
+  color: #ffffff;
+  line-height: 1rem;
+  padding: .25rem .5rem;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.photoset {
+  width: 100%;
+  overflow: hidden;
+}
+
+.photoset img {
+  max-width: 100%;
+  display: block;
+}
+
+.photoset figure {
+  position: relative;
+  backface-visibility: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.photoset .photoset-row {
+  width: 150%;
+  margin-bottom: calc(2 * var(--photoset-item-margin));
+}
+.photoset .photoset-row:after {
+  clear: both;
+  content: "";
+  display: block;
+  visibility: hidden;
+}
+
+.photoset .photoset-row .photoset-item {
+  display: block;
+  float: left;
+  margin: 0 var(--photoset-item-margin);
+  width: auto;
+}
+
+.photoset .photoset-row .photoset-item:first-child {
+  margin-left: 0;
+}
+.photoset .photoset-row .photoset-item:last-child {
+  margin-right: 0;
+}
+.photoset .photoset-row .photoset-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 0;
+}
+
+.pswp__button.pswp__button--close {
+  width: 80px;
+  height: 80px;
+}
+.pswp__button.pswp__button--close .pswp__icn {
+  width: 80px;
+  height: 80px;
+  top: 0;
+  left: 0;
+}
+
+body > a.go-to-top, 
+body > a.share 
+{
+  z-index: 9999;
+  position: fixed;
+  display: block;
+  background: rgba(25, 25, 25, .6);
+  color: #ffffff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;
+  bottom: .7rem;
+  right: -10rem;
+  font-size: .6rem;
+  text-align: center;
+  transition: bottom .2s ease-in-out, right .2s ease-in-out;
+}
+body > a.share {
+  bottom: calc(3rem + .7rem + .7rem);
+}
+
+body > a.go-to-top img, 
+body > a.share img {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: .5rem auto 0;
+}
+
+body.after-story-each > a.go-to-top,
+body.after-story-each > a.share
+{
+  right: .7rem;
+}
+
+body.on-story-each > a.go-to-top {
+  right: .7rem;
+  bottom: 160px;
+}
+body.on-story-each > a.share
+{
+  bottom: calc(3rem + .7rem + 160px);
+  right: .7rem;
+}
+
