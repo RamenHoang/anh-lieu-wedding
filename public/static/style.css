@@ -1,37 +1,48 @@
-@import url('./pretendard.css');
-@import url('./toss-face.css');
+@import url("./pretendard.css");
+@import url("./toss-face.css");
 
 :root {
   --main-background: rgba(41, 47, 51, 1);
   --main-color: #a9abad;
-  --playground-background: linear-gradient( 0deg, 
-    var(--main-background) 0%, 
-    var(--main-background) 80%, 
-    rgba(41, 47, 51, 0.85) 85%, 
+  --playground-background: linear-gradient(
+    0deg,
+    var(--main-background) 0%,
+    var(--main-background) 80%,
+    rgba(41, 47, 51, 0.85) 85%,
     rgba(41, 47, 51, 0) 100%
   );
   --photoset-item-margin: 2px;
   --pink-background: rgba(241, 232, 223, 1);
   --pink-color: rgb(32, 66, 49);
+  --pink-background-color: #ff7d7da0
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   font-size: 36px;
   color: var(--main-color);
   background: var(--main-background);
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  /* Pretendard 추천 글꼴 순서 */
-  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
   color: #ffffff;
@@ -43,7 +54,9 @@ a {
   font-weight: 500;
 }
 
-section { position: relative; }
+section {
+  position: relative;
+}
 
 section .center {
   position: absolute;
@@ -53,18 +66,19 @@ section .center {
 }
 
 section .wrap {
-  width: 90%!important;
+  width: 90% !important;
   max-width: 1400px;
   min-width: 800px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 0 20px;
   overflow: hidden;
+  position: relative;
 }
 
 section .clearfix:after {
   display: block;
   clear: both;
-  content: '';
+  content: "";
 }
 
 #front {
@@ -84,23 +98,23 @@ section .clearfix:after {
   right: 0;
   top: 0;
   bottom: 0;
-  background-image: url('./front.jpg');
+  background-image: url("/photos/anh-lieu/front.jpeg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: .8;
-  content: '';
+  opacity: 0.5;
+  content: "";
 }
 
 #front h1 {
   line-height: 4rem;
   font-size: 3rem;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 
 #front h2 {
-  padding: .2rem 0;
+  padding: 0.2rem 0;
   line-height: 2rem;
   font-size: 1.5rem;
   text-align: center;
@@ -116,10 +130,10 @@ section .clearfix:after {
 #front .overlay {
   position: absolute;
   background: linear-gradient(
-    rgba(41,47,51,0) 0,
-    rgba(41,47,51,.5) 33%,
-    rgba(41,47,51,.77) 70%,
-    rgba(41,47,51,1) 100%
+    rgba(41, 47, 51, 0) 0,
+    rgba(41, 47, 51, 0.5) 33%,
+    rgba(41, 47, 51, 0.77) 70%,
+    rgba(41, 47, 51, 1) 100%
   );
   height: 40vh;
   bottom: 0;
@@ -133,7 +147,7 @@ section .clearfix:after {
   width: 3rem;
   height: 1.4rem;
   line-height: 1.4rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   text-align: center;
 
   right: 5%;
@@ -151,7 +165,7 @@ section .clearfix:after {
   left: 50%;
   width: 1.2rem;
   height: 2rem;
-  margin-left: -.6rem;
+  margin-left: -0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 2rem;
   box-sizing: border-box;
@@ -176,12 +190,12 @@ section .clearfix:after {
 
 #front .next span::before {
   position: absolute;
-  top: .4rem;
+  top: 0.4rem;
   left: 50%;
-  content: '';
-  width: .2rem;
-  height: .2rem;
-  margin-left: -.1rem;
+  content: "";
+  width: 0.2rem;
+  height: 0.2rem;
+  margin-left: -0.1rem;
   background: white;
   border-radius: 100%;
   animation: scroll 2s infinite;
@@ -190,16 +204,17 @@ section .clearfix:after {
 
 #front a.go-to-wedding {
   display: block;
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.4rem;
-  width: 3rem;
+  width: 6rem;
   height: 1.4rem;
 
   padding-top: 2.2rem;
 
   position: absolute;
-  bottom: 15.5vh;
+  bottom: 8.5vh;
   left: 15%;
+  text-align: center;
 }
 
 #front a.go-to-wedding img {
@@ -214,16 +229,17 @@ section .clearfix:after {
 
 #front a.go-to-welcome {
   display: block;
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.4rem;
-  width: 3rem;
+  width: 6rem;
   height: 1.4rem;
 
   padding-top: 2.2rem;
 
   position: absolute;
-  bottom: 15.5vh;
+  bottom: 8.5vh;
   right: 15%;
+  text-align: center;
 }
 
 #front a.go-to-welcome img {
@@ -295,7 +311,7 @@ section .clearfix:after {
 
 #story-each p {
   line-height: 1.5rem;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   margin: 0;
 }
 
@@ -318,13 +334,14 @@ section .clearfix:after {
   position: absolute;
   margin: 0;
   padding: 50px 40px 30px;
-  transition: right .25s ease-in-out, left .25s ease-in-out, transform .25s ease-in-out;
+  transition: right 0.25s ease-in-out, left 0.25s ease-in-out,
+    transform 0.25s ease-in-out;
 }
 
-#playground .thumb.groom { 
+#playground .thumb.groom {
   left: 0;
 }
-#playground .thumb.bride { 
+#playground .thumb.bride {
   right: 0;
 }
 
@@ -342,7 +359,7 @@ section .clearfix:after {
 #black-to-pink {
   color: var(--main-color);
   text-align: center;
-  font-size: .8rem;
+  font-size: 0.8rem;
   padding: 5vh 0;
 }
 
@@ -362,13 +379,11 @@ section .clearfix:after {
   color: var(--pink-color);
 }
 
-
 #wedding-photo {
   padding: 10vh 0 5vh;
-  font-size: .8rem;
+  font-size: 0.8rem;
   text-align: center;
 }
-
 
 #wedding-photo .photoset {
   margin-top: 5vh;
@@ -384,7 +399,7 @@ section .clearfix:after {
 }
 
 #welcome p {
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.2rem;
   margin: 0;
   text-align: center;
@@ -406,7 +421,7 @@ section .clearfix:after {
 }
 
 #location p {
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.2rem;
   margin: 0;
   text-align: center;
@@ -438,7 +453,6 @@ section .clearfix:after {
   padding: 0 2%;
 }
 
-
 #location ul li a {
   display: block;
   width: 100%;
@@ -455,7 +469,6 @@ section .clearfix:after {
   border: 1px solid #4f4f4f;
 }
 
-
 #congratulatory {
   padding: 5vh 0;
 }
@@ -466,15 +479,14 @@ section .clearfix:after {
 }
 
 #congratulatory table {
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin: 2vh auto 0;
 }
 
 #congratulatory table td {
   line-height: 1.5rem;
-  padding: .5rem 1vh;
+  padding: 0.5rem 1vh;
 }
-
 
 #congratulatory table td .copy-btn {
   display: inline-block;
@@ -482,10 +494,10 @@ section .clearfix:after {
   background: #204231;
   color: #ffffff;
   line-height: 1rem;
-  padding: .25rem .5rem;
-  margin: 0 0 0 .5rem;;
+  padding: 0.25rem 0.5rem;
+  margin: 0 0 0 0.5rem;
   vertical-align: top;
-  font-size: .8rem;
+  font-size: 0.8rem;
   cursor: pointer;
 }
 
@@ -496,12 +508,12 @@ section .clearfix:after {
 
 #thanks-to {
   padding: 5vh 0;
-  font-size: .8rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
 #thanks-to .rose {
-  color: #FF0080;
+  color: #ff0080;
 }
 
 #thanks-to a {
@@ -515,8 +527,8 @@ section .clearfix:after {
   background: #204231;
   color: #ffffff;
   line-height: 1rem;
-  padding: .25rem .5rem;
-  font-size: .8rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
   cursor: pointer;
 }
 
@@ -580,48 +592,67 @@ section .clearfix:after {
   left: 0;
 }
 
-body > a.go-to-top, 
-body > a.share 
-{
+body > a.go-to-top,
+body > a.share {
   z-index: 9999;
   position: fixed;
   display: block;
-  background: rgba(25, 25, 25, .6);
+  background: rgba(25, 25, 25, 0.6);
   color: #ffffff;
   width: 3rem;
   height: 3rem;
   border-radius: 1.5rem;
-  bottom: .7rem;
+  bottom: 0.7rem;
   right: -10rem;
-  font-size: .6rem;
+  font-size: 0.6rem;
   text-align: center;
-  transition: bottom .2s ease-in-out, right .2s ease-in-out;
+  transition: bottom 0.2s ease-in-out, right 0.2s ease-in-out;
 }
 body > a.share {
-  bottom: calc(3rem + .7rem + .7rem);
+  bottom: calc(3rem + 0.7rem + 0.7rem);
 }
 
-body > a.go-to-top img, 
+body > a.go-to-top img,
 body > a.share img {
   display: block;
   width: 1.4rem;
   height: 1.4rem;
-  margin: .5rem auto 0;
+  margin: 0.5rem auto 0;
 }
 
 body.after-story-each > a.go-to-top,
-body.after-story-each > a.share
-{
-  right: .7rem;
+body.after-story-each > a.share {
+  right: 0.7rem;
 }
 
 body.on-story-each > a.go-to-top {
-  right: .7rem;
+  right: 0.7rem;
   bottom: 160px;
 }
-body.on-story-each > a.share
-{
-  bottom: calc(3rem + .7rem + 160px);
-  right: .7rem;
+body.on-story-each > a.share {
+  bottom: calc(3rem + 0.7rem + 160px);
+  right: 0.7rem;
 }
 
+#time-counter-container {
+  display: flex;
+  width: 600px;
+  margin: auto;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+#time-counter-container .counter-datetime-box {
+  border: 5px solid white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pink-background-color);
+}
+
+#time-counter-container .counter-datetime-unit {
+  text-align: center;
+}
