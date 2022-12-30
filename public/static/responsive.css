@@ -28,6 +28,12 @@
         width: auto;
         padding: 0 10px;
     }
+
+    .pswp__button.pswp__button--close .pswp__icn,
+    .pswp__button.pswp__button--close {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 @media only screen and (max-width: 540px) {
@@ -90,7 +96,8 @@
         bottom: calc(2rem + 0.5rem + 160px);
     }
 
-    body > a.go-to-top, body > a.share {
+    body > a.go-to-top,
+    body > a.share {
         width: 2rem;
         height: 2rem;
     }
@@ -139,7 +146,8 @@
         padding: 0 0 0.5rem 0;
     }
 
-    #story-each .content, #story-each .content:first-child {
+    #story-each .content,
+    #story-each .content:first-child {
         margin-top: 0;
     }
 }
