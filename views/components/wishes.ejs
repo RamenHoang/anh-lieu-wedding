@@ -36,20 +36,13 @@
             </div>
             <div class="wish-control col-1">
                 <div>
-                    <input id="send-wish-btn-idx" type="submit" value="<%= __('send_wish') %>" />
+                    <input id="send-wish-btn-idx" type="button" value="<%= __('send_wish') %>" />
                 </div>
             </div>
         </form>
     </div>
     <h5><%= __('thanks-to-wishes') %></h5>
     <div id="view-wish-idx">
-        <% wishes.forEach(function(wish, index) { %>
-        <div
-            class="wish <% if (index % 2 == 0) { %> even <% } else { %> odd <% } %>"
-        >
-            <div class="wish-username"><%=wish.name%></div>
-            <div class="wish-content"><%=wish.content%></div>
-        </div>
-        <% }) %>
+        <%- include('./parts/wishes.ejs') %>
     </div>
 </div>

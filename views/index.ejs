@@ -41,7 +41,19 @@
         <div id="top"></div>
         <%- include('./components/background-audio.ejs') %>
         <section id="front">
-            <div class="curtain"></div>
+            <div class="curtain">
+                <video
+                    muted=""
+                    loop=""
+                    autoplay
+                    playsinline=""
+                    id="my-video-idx"
+                    style="opacity: 1"
+                    class=""
+                >
+                    <source src="/static/been_together.mp4" />
+                </video>
+            </div>
             <div class="wrap center">
                 <%- include('./components/time-counter'); %>
             </div>
@@ -155,6 +167,7 @@
             <img src="/static/share-icon.svg" />
         </a>
 
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script
             type="text/javascript"
             charset="UTF-8"
@@ -189,13 +202,6 @@
             });
             lightbox.init();
 
-            // cliipboard.js
-            // var clipboard = new ClipboardJS('.copy-btn');
-            // clipboard.on('success', function (e) {
-            //     alert("'" + e.text + "' 복사 되었습니다.");
-            //     e.clearSelection();
-            // });
-
             var weddingDatetime = "<%= wedding_datetime %>";
             var audioPath = "<%= audio_path %>";
         </script>
@@ -208,6 +214,11 @@
             type="text/javascript"
             charset="UTF-8"
             src="/static/background-audio.js"
+        ></script>
+        <script
+            type="text/javascript"
+            charset="UTF-8"
+            src="/static/wishes.js"
         ></script>
     </body>
 </html>
