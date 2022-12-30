@@ -2,6 +2,10 @@ const mysql = require("mysql2/promise");
 
 const database = module.exports;
 
+/**
+ *
+ * @returns {mysql.Connection}
+ */
 database.init = async () => {
   try {
     connection = await mysql.createConnection({

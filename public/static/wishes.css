@@ -1,5 +1,5 @@
 #wishes {
-    padding-top: 1rem;
+    padding-top: var(--tf-size-default);
     padding-bottom: 1rem;
 }
 #wishes h3 {
@@ -10,6 +10,7 @@
     width: 90%;
     margin: auto;
     margin-top: 1rem;
+    font-size: 0.8rem;
 }
 
 .wishes-container h5 {
@@ -23,7 +24,7 @@
     overflow-x: scroll;
     outline: 10px solid var(--pink-background);
     outline-offset: -10px;
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
@@ -54,18 +55,21 @@
 }
 
 #send-wish-idx {
-    width: 80%;
+    width: 100%;
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
 }
 
 #send-wish-idx input,
-#send-wish-idx textarea
-{
+#send-wish-idx textarea {
     line-height: 1.5;
     padding: 0.375rem 0.75rem;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+        Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+        "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", sans-serif;
 }
 
 .wish-control {
@@ -94,19 +98,15 @@
     display: block;
     width: 100%;
     resize: none;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
 }
 
 .col-1 div input {
     display: block;
     width: 100%;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+        Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+        "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", sans-serif;
     background-color: var(--pink-background-color);
     color: #ffffff;
     cursor: pointer;
@@ -126,4 +126,35 @@
 .content-right {
     display: flex;
     justify-content: right;
+}
+
+.guestbook {
+    background-image: url(/static/guestbook.png);
+    width: var(--tf-size-default);
+    height: var(--tf-size-default);
+    display: inline-block;
+    background-size: cover;
+    position: absolute;
+    top: calc(-1 * var(--tf-size-default) / 2);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.wedding-festival {
+    background-image: url(/static/wedding-festival-bg.png);
+    width: var(--tf-size-default);
+    height: var(--tf-size-default);
+    display: inline-block;
+    background-size: cover;
+    position: absolute;
+    bottom: calc(-1 * var(--tf-size-default) / 2);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+#send-wish-btn-idx:hover {
+    transition: 0.2s ease;
+    background-color: var(--pink-background-color-lighter);
 }

@@ -1,6 +1,8 @@
 function backgroundAudioInit() {
   var audio = new Audio(audioPath);
-  audio.volume = 0.3;
+  audio.volume = 0.1;
+  audio.loop = true;
+  audio.autoplay = true;
 
   var audioSwitch = document.getElementById("play-audio-idx");
   var volumeImage = document.getElementById("volume-image-idx");
@@ -9,7 +11,7 @@ function backgroundAudioInit() {
     if (audio.paused) {
       audio.play();
       volumeImage.setAttribute("src", "/static/volume-on.png");
-      return;
+      resolve(true);
     }
 
     audio.pause();
