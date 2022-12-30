@@ -5,6 +5,12 @@ const path = require("path");
 const i18n = require("i18n");
 const mysql = require("./mysql");
 
+async function start() {
+  global.connection = await mysql.init();
+}
+
+start();
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
@@ -20,9 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
   req.setLocale("vi");
 
-  const connection = await mysql.init();
-
-  const [rows, fields] = await connection.execute(
+  const [rows, fields] = await global.connection.execute(
     "SELECT * FROM wishes ORDER BY datetime DESC"
   );
 
@@ -38,7 +42,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/wishes", async (req, res) => {
-  const [rows, fields] = await connection.execute(
+  const [rows, fields] = await global.connection.execute(
     "INSERT INTO wishes (name, email, content) VALUES (?, ?, ?)",
     [req.body.name, req.body.email, req.body.content]
   );

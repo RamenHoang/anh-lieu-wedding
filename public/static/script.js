@@ -115,20 +115,16 @@ function getAbsoluteTop(elem) {
 
       Array.from($row.children).forEach(function ($figure) {
         var image = $figure.children[0].children[0];
-        // totalRatio += parseFloat(image.getAttribute("data-ratio"));
-        totalRatio += parseFloat(image.width / image.height);
-
-        console.log(image.width, image.height, image.src);
+        totalRatio += parseFloat(image.getAttribute("data-ratio"));
         $images.push(image);
       });
 
       $images.forEach(function ($image) {
-        // var ratio = parseFloat($image.getAttribute("data-ratio"));
-        var ratio = parseFloat($image.width / $image.height);
+        var ratio = parseFloat($image.getAttribute("data-ratio"));
         var width = (exactWidth * ratio) / totalRatio;
         $image.width = width;
         $image.height = width / ratio;
-        // $image.src = $image.getAttribute("data-src");
+        $image.src = $image.getAttribute("data-src");
 
         var parent = $image.parentNode;
         parent.dataset.pswpWidth = wholeWidth;

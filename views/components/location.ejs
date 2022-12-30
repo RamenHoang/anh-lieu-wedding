@@ -1,0 +1,25 @@
+<h4><%= __('way_to_come') %></h4>
+<img id="image-map" src="map/map.png" />
+
+<p><b><%= __('wedding_date_time') %></b></p>
+<p><b><%= __('wedding_hall') %></b></p>
+<p>&nbsp;</p>
+<p>
+    <a href="tel:<%= __('tel_contact') %>" class="tel"
+        ><%= __('tel_contact') %></a
+    >
+</p>
+<p>&nbsp;</p>
+<p><%= __('wedding_hall_address') %></p>
+<p><small><%= __('wedding_hall_address_notice') %></small></p>
+
+<ul>
+    <li>
+        <a href="<%= google_map_link %>" target="_blank"
+            ><%= __('view_on_google_map') %></a
+        >
+    </li>
+    <li>
+        <a href="<%= map_link %>" target="_blank"><%= __('download_map') %></a>
+    </li>
+</ul>

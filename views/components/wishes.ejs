@@ -1,36 +1,55 @@
+<span class="guestbook"></span>
 <h3><%= __('guestbook') %></h3>
 <div class="wishes-container">
-    <h5><%= __('thanks-to-wishes') %></h5>
+    <h5><%= __('let-leave-a-wish') %></h5>
     <div id="send-wish-idx">
         <form method="POST" action="wishes">
             <div class="wish-control col-2">
                 <div class="content-left">
-                    <input type="text" name="name" id="username-wish-idx" placeholder="Bí danh: *" required/>
+                    <input
+                        type="text"
+                        name="name"
+                        id="username-wish-idx"
+                        placeholder="Bí danh: *"
+                        required
+                    />
                 </div>
                 <div class="content-left">
-                    <input type="text" name="email" id="email-wish-idx" placeholder="Email:"/>
+                    <input
+                        type="text"
+                        name="email"
+                        id="email-wish-idx"
+                        placeholder="Email:"
+                    />
                 </div>
             </div>
             <div class="wish-control col-1">
                 <div>
-                    <textarea type="text" name="content" id="content-wish-idx" placeholder="Lời chúc: *" required></textarea>
+                    <textarea
+                        type="text"
+                        name="content"
+                        id="content-wish-idx"
+                        placeholder="Lời chúc: *"
+                        required
+                    ></textarea>
                 </div>
             </div>
             <div class="wish-control col-1">
                 <div>
-                    <input type="submit" value="<%= __('send_wish') %>">
+                    <input id="send-wish-btn-idx" type="submit" value="<%= __('send_wish') %>" />
                 </div>
             </div>
         </form>
     </div>
+    <h5><%= __('thanks-to-wishes') %></h5>
     <div id="view-wish-idx">
         <% wishes.forEach(function(wish, index) { %>
-            <div class="wish <% if (index % 2 == 0) { %> even <% } else { %> odd <% } %>">
-                <div class="wish-username"><%=wish.name%></div>
-                <div class="wish-content">
-                    <%=wish.content%>
-                </div>
-            </div>
+        <div
+            class="wish <% if (index % 2 == 0) { %> even <% } else { %> odd <% } %>"
+        >
+            <div class="wish-username"><%=wish.name%></div>
+            <div class="wish-content"><%=wish.content%></div>
+        </div>
         <% }) %>
     </div>
 </div>
