@@ -67,13 +67,12 @@ section .center {
 }
 
 section .wrap {
-    width: 90% !important;
+    width: 100% !important;
     max-width: 1400px;
-    min-width: 800px;
-    /* margin: 0 auto; */
-    padding: 0 20px;
+    padding: 0 10px;
     overflow: hidden;
     position: relative;
+    margin: auto;
 }
 
 section .clearfix:after {

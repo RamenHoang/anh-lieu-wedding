@@ -1,0 +1,145 @@
+@media only screen and (max-width: 820px) {
+    section .wrap {
+        padding: 0;
+    }
+
+    #story-each .content,
+    #story-each .content:first-child {
+        margin-top: 5vh;
+    }
+
+    #story-each .content.groom {
+        padding-left: 10px;
+    }
+
+    #story-each .content.bride {
+        padding-right: 10px;
+    }
+
+    body #pink-background section {
+        padding: 5vh 10px;
+    }
+
+    #location ul {
+        width: 100%;
+    }
+
+    .wishes-container {
+        width: auto;
+        padding: 0 10px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    #time-counter-container {
+        width: 80%;
+    }
+
+    #time-counter-container .counter-datetime-box {
+        width: 2rem;
+        height: 2rem;
+        border: 2.5px solid white;
+    }
+
+    #time-counter-container .counter-datetime-box h2 {
+        font-size: 1rem;
+    }
+
+    #time-counter-container .counter-datetime-unit h3 {
+        font-size: 0.8rem;
+    }
+
+    #front a.go-to-wedding {
+        left: 0;
+        font-size: 0.5rem;
+    }
+
+    #front a.go-to-welcome {
+        right: 0;
+        font-size: 0.5rem;
+    }
+
+    #front p {
+        font-size: 0.8rem;
+    }
+
+    #story-each h3 {
+        font-size: 1rem;
+    }
+
+    #story-each p {
+        font-size: 0.8rem;
+    }
+
+    #location ul li a {
+        line-height: 1.5rem;
+        font-size: 0.5rem;
+    }
+
+    #send-wish-idx input,
+    #send-wish-idx textarea {
+        font-size: 0.5rem;
+    }
+
+    body.on-story-each > a.go-to-top {
+        right: 0.1rem;
+    }
+
+    body.on-story-each > a.share {
+        right: 0.1rem;
+        bottom: calc(2rem + 0.5rem + 160px);
+    }
+
+    body > a.go-to-top, body > a.share {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    body.after-story-each > a.go-to-top {
+        right: 0.1rem;
+        bottom: 0;
+        margin-bottom: 10px;
+    }
+
+    body.after-story-each > a.share {
+        right: 0.1rem;
+        bottom: calc(2rem + 0.5rem + 10px);
+    }
+
+    #front h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    #time-counter-container .counter-datetime-box h2 {
+        font-size: 0.8rem;
+    }
+
+    #time-counter-container .counter-datetime-box {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    #time-counter-container .counter-datetime-unit h3 {
+        font-size: 0.6rem;
+    }
+
+    #front h2,
+    #story-each h3 {
+        font-size: 0.8rem;
+    }
+
+    #front p,
+    #story-each p {
+        font-size: 0.6rem;
+    }
+
+    #story-each h3 {
+        padding: 0 0 0.5rem 0;
+    }
+
+    #story-each .content, #story-each .content:first-child {
+        margin-top: 0;
+    }
+}

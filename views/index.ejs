@@ -2,12 +2,14 @@
 <html lang="vi">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%=__('bride_groom_get_married')%></title>
         <link rel="stylesheet" href="/static/style.css" />
         <link rel="stylesheet" href="/static/photoswipe.css" />
-        <link rel="icon" type="image/png" href="/static/favicon.png" />
+        <link rel="icon" type="image/png" href="/static/wedding-festival.png" />
         <link rel="stylesheet" href="/static/background-audio.css" />
         <link rel="stylesheet" href="/static/wishes.css" />
+        <link rel="stylesheet" href="/static/responsive.css" />
 
         <!-- Primary Meta Tags -->
         <meta
@@ -24,7 +26,7 @@
             content="<%=__('wedding_date')%>. <%=__('bride_groom_get_married')%>"
         />
         <meta property="og:description" content="<%=__('foreword')%>" />
-        <meta property="og:image" content="/photos/wedding/4.jpg" />
+        <meta property="og:image" content="/photos/meta/image.jpg" />
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
@@ -34,51 +36,13 @@
             content="<%=__('wedding_date')%>. <%=__('bride_groom_get_married')%>"
         />
         <meta property="twitter:description" content="<%=__('foreword')%>" />
-        <meta property="twitter:image" content="/photos/wedding/4.jpg" />
+        <meta property="twitter:image" content="/photos/meta/image.jpg" />
     </head>
 
     <body>
         <div id="top"></div>
         <%- include('./components/background-audio.ejs') %>
-        <section id="front">
-            <div class="curtain">
-                <video
-                    muted="1"
-                    loop=""
-                    autoplay
-                    playsinline=""
-                    volume="0.1"
-                    id="my-video-idx"
-                    style="opacity: 1"
-                    class=""
-                >
-                    <source src="/static/been_together.mp4" />
-                </video>
-            </div>
-            <div class="wrap center">
-                <%- include('./components/time-counter'); %>
-            </div>
-            <div class="wrap center">
-                <h2><%=__('groom_name')%> &#128157; <%=__('bride_name')%></h2>
-                <p><%=__('we_are_get_married')%></p>
-            </div>
-
-            <div class="overlay"></div>
-
-            <a
-                class="go-to go-to-wedding"
-                href="#wedding-photo"
-                data-margin-top="120"
-            >
-                <img src="/static/wedding-couple-icon.svg" />
-                <%= __('wedding_photos') %>
-            </a>
-
-            <a class="go-to go-to-welcome" href="#welcome">
-                <img src="/static/map-icon.svg" />
-                <%= __('way_to_come') %>
-            </a>
-        </section>
+        <section id="front"><%- include('./components/front.ejs') %></section>
 
         <section id="story-each">
             <div class="wrap clearfix">
