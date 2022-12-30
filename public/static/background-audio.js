@@ -1,22 +1,21 @@
 function backgroundAudioInit() {
-  var audio = new Audio(audioPath);
-  audio.volume = 0.1;
-  audio.loop = true;
-  audio.autoplay = true;
+  // var audio = new Audio(audioPath);
+  // audio.volume = 0.1;
+  // audio.loop = true;
+  // audio.autoplay = true;
 
+  var video = document.getElementById("my-video-idx");
   var audioSwitch = document.getElementById("play-audio-idx");
   var volumeImage = document.getElementById("volume-image-idx");
 
   function triggerBackgroundAudio() {
-    if (audio.paused) {
-      audio.play();
+    if (video.muted) {
       volumeImage.setAttribute("src", "/static/volume-on.png");
-      resolve(true);
+    } else {
+      volumeImage.setAttribute("src", "/static/volume-off.png");
     }
 
-    audio.pause();
-    volumeImage.setAttribute("src", "/static/volume-off.png");
-    return;
+    video.muted = !video.muted;
   }
 
   audioSwitch.addEventListener("click", triggerBackgroundAudio);
