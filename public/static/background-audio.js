@@ -1,10 +1,6 @@
 function backgroundAudioInit() {
-  // var audio = new Audio(audioPath);
-  // audio.volume = 0.1;
-  // audio.loop = true;
-  // audio.autoplay = true;
-
   var video = document.getElementById("my-video-idx");
+  video.volume = 0.5;
   var audioSwitch = document.getElementById("play-audio-idx");
   var volumeImage = document.getElementById("volume-image-idx");
 

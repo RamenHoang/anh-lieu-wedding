@@ -1,0 +1,30 @@
+<div class="curtain">
+    <video
+        muted="1"
+        loop=""
+        autoplay
+        playsinline=""
+        volume="0.1"
+        id="my-video-idx"
+        style="opacity: 1"
+    >
+        <source src="/static/been_together.mp4" />
+    </video>
+</div>
+<div class="wrap center"><%- include('./parts/time-counter'); %></div>
+<div class="wrap center">
+    <h2><%=__('groom_name')%> &#128157; <%=__('bride_name')%></h2>
+    <p><%=__('we_are_get_married')%></p>
+</div>
+
+<div class="overlay"></div>
+
+<a class="go-to go-to-wedding" href="#wedding-photo" data-margin-top="120">
+    <img src="/static/wedding-couple-icon.svg" />
+    <%= __('wedding_photos') %>
+</a>
+
+<a class="go-to go-to-welcome" href="#welcome">
+    <img src="/static/map-icon.svg" />
+    <%= __('way_to_come') %>
+</a>
