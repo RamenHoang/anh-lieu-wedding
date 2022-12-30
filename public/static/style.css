@@ -92,6 +92,7 @@ section .clearfix:after {
     top: 0;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
 }
 #front .curtain::before {
     position: absolute;
