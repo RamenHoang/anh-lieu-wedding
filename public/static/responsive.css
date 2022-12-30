@@ -34,6 +34,15 @@
         width: 50px;
         height: 50px;
     }
+
+    #play-audio-idx {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    #play-audio-idx img {
+        width: 1.4rem;
+    }
 }
 
 @media only screen and (max-width: 540px) {
@@ -98,8 +107,13 @@
 
     body > a.go-to-top,
     body > a.share {
-        width: 2rem;
-        height: 2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    body > a.go-to-top img,
+    body > a.share img {
+        width: 0.8rem;
     }
 
     body.after-story-each > a.go-to-top {
@@ -115,6 +129,92 @@
 
     #front h2 {
         font-size: 1.2rem;
+    }
+
+    #front a.go-to-wedding,
+    #front a.go-to-welcome {
+        width: 4rem;
+        padding-top: 1.5rem;
+    }
+
+    #playground {
+        height: 60px;
+    }
+
+    #playground .thumb {
+        padding: 5px;
+        width: fit-content;
+    }
+
+    .tf.xsmall {
+        background-size: calc(var(--tf-size-xxsmall) * 5)
+            calc(var(--tf-size-xxsmall) * 2);
+        width: var(--tf-size-xxsmall);
+        height: var(--tf-size-xxsmall);
+        background-position-x: calc(-5 * var(--tf-size-xxsmall));
+        background-position-y: calc(-2 * var(--tf-size-xxsmall));
+    }
+    .tf.xsmall.baby {
+        background-position: 0 0;
+    }
+    .tf.xsmall.boy {
+        background-position: calc(-1 * var(--tf-size-xxsmall)) 0;
+    }
+    .tf.xsmall.man {
+        background-position: calc(-2 * var(--tf-size-xxsmall)) 0;
+    }
+    .tf.xsmall.man-with-tuxido {
+        background-position: calc(-3 * var(--tf-size-xxsmall)) 0;
+    }
+    .tf.xsmall.girl {
+        background-position: calc(-1 * var(--tf-size-xxsmall))
+            calc(-1 * var(--tf-size-xxsmall));
+    }
+    .tf.xsmall.woman {
+        background-position: calc(-2 * var(--tf-size-xxsmall))
+            calc(-1 * var(--tf-size-xxsmall));
+    }
+    .tf.xsmall.woman-with-veil {
+        background-position: calc(-3 * var(--tf-size-xxsmall))
+            calc(-1 * var(--tf-size-xxsmall));
+    }
+    .tf.xsmall.couple {
+        background-position: calc(-4 * var(--tf-size-xxsmall)) 0;
+    }
+    .tf.xsmall.wedding-hall {
+        background-position: calc(-4 * var(--tf-size-xxsmall))
+            calc(-1 * var(--tf-size-xxsmall));
+    }
+
+    #play-audio-idx {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-left: 0.1rem;
+    }
+
+    .on-story-each #play-audio-idx {
+        margin-bottom: 60px;
+    }
+
+    #play-audio-idx img {
+        width: 0.8rem;
+    }
+
+    body.on-story-each > a.go-to-top {
+        bottom: 60px;
+    }
+
+    body.on-story-each > a.share {
+        bottom: calc(1.2rem + 0.5rem + 50px);
+    }
+
+    body.after-story-each > a.share {
+        bottom: calc(1.2rem + 0.5rem);
+    }
+
+    #front a.go-to-wedding img,
+    #front a.go-to-welcome img {
+        height: 1.2rem;
     }
 }
 
