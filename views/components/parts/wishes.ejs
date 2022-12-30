@@ -1,0 +1,6 @@
+<% wishes.forEach(function(wish, index) { %>
+<div class="wish <% if (index % 2 == 0) { %> even <% } else { %> odd <% } %>">
+    <div class="wish-username"><%=wish.name%></div>
+    <div class="wish-content"><%=wish.content%></div>
+</div>
+<% }) %>

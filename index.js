@@ -42,12 +42,22 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/wishes", async (req, res) => {
-  const [rows, fields] = await global.connection.execute(
-    "INSERT INTO wishes (name, email, content) VALUES (?, ?, ?)",
-    [req.body.name, req.body.email, req.body.content]
-  );
+  try {
+    await global.connection.execute(
+      "INSERT INTO wishes (name, email, content) VALUES (?, ?, ?)",
+      [req.body.name, req.body.email, req.body.content]
+    );
 
-  res.redirect("/#wishes");
+    const [rows, fields] = await global.connection.execute(
+      "SELECT * FROM wishes ORDER BY datetime DESC"
+    );
+
+    res.status(200).render("components/parts/wishes", {
+      wishes: rows,
+    });
+  } catch (e) {
+    res.status(400).json(e);
+  }
 });
 
 app.listen(process.env.PORT, () => {
