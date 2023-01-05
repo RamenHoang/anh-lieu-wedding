@@ -605,7 +605,7 @@ section .clearfix:after {
 
 body > a.go-to-top,
 body > a.share {
-    z-index: 9999;
+    z-index: 9998;
     position: fixed;
     display: flex;
     justify-content: center;

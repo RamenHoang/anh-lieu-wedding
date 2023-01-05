@@ -216,6 +216,36 @@
     #front a.go-to-welcome img {
         height: 1.2rem;
     }
+
+    .guestbook,
+    .wedding-festival {
+        width: var(--tf-size-xsmall);
+        height: var(--tf-size-xsmall);
+    }
+
+    .wedding-festival {
+        bottom: calc(-1 * var(--tf-size-xsmall) / 2);
+    }
+
+    .guestbook {
+        top: calc(-1 * var(--tf-size-xsmall) / 2);
+    }
+
+    #wishes {
+        padding-top: var(--tf-size-xsmall);
+    }
+
+    #wishes h3 {
+        font-size: 1rem;
+    }
+
+    #thanks-to {
+        font-size: 0.7rem;
+    }
+
+    .wishes-container h5 {
+        font-size: 0.7rem;
+    }
 }
 
 @media only screen and (max-width: 414px) {
