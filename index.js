@@ -18,6 +18,8 @@ i18n.configure({
   locales: ["en", "vi"],
   directory: path.join(__dirname, "locales"),
   defaultLocale: "vi",
+  updateFiles: false,
+  syncFiles: true
 });
 app.use(i18n.init);
 app.use(express.json());
@@ -30,14 +32,29 @@ app.get("/", async (req, res) => {
     "SELECT * FROM wishes ORDER BY datetime DESC"
   );
 
+  const extra = {};
+
+  if (req.headers.host == process.env.GROOM_HOST) {
+    extra.map_path = process.env.GROOM_MAP_IMAGE_PATH;
+    extra.groom = true;
+    extra.bride = false;
+    extra.map_link = process.env.GROOM_GOOGLE_MAP_LINK;
+    extra.google_map_link = process.env.GROOM_GOOGLE_MAP_LINK;
+  } else if (req.headers.host == process.env.BRIDE_HOST) {
+    extra.map_path = process.env.BRIDE_MAP_IMAGE_PATH;
+    extra.groom = false;
+    extra.bride = true;
+    extra.map_link = process.env.BRIDE_GOOGLE_MAP_LINK;
+    extra.google_map_link = process.env.BRIDE_GOOGLE_MAP_LINK;
+  }
+
   return res.render("index", {
     http_host: process.env.HOST,
     wedding_date: process.env.WEDDING_DATE,
     wedding_datetime: process.env.WEDDING_DATETIME,
-    google_map_link: process.env.GOOGLE_MAP_LINK,
-    map_link: process.env.DOWNLOAD_MAP_LINK,
     audio_path: process.env.AUDIO_PATH,
     wishes: rows,
+    ...extra,
   });
 });
 
