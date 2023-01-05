@@ -1,15 +1,37 @@
 <h4><%= __('way_to_come') %></h4>
-<img id="image-map" src="map/viet_cuong_map.png" />
+<img id="image-map" src="<%= map_path %>" />
 
-<p><b><%= __('wedding_date_time') %></b></p>
-<p><b><%= __('wedding_hall') %></b></p>
 <p>
-    <a href="tel:<%= __('tel_contact') %>" class="tel"
-        ><%= __('tel_contact') %></a
-    >
+    <b>
+        <% if (groom) { %> <%= __('groom_wedding_date_time') %> <% } else { %>
+        <%= __('bride_wedding_date_time') %> <% } %>
+    </b>
 </p>
-<p><%= __('wedding_hall_address') %></p>
-<p><small><%= __('wedding_hall_address_notice') %></small></p>
+<p>
+    <b>
+        <% if (groom) { %> <%= __('groom_wedding_hall') %> <% } else { %> <%=
+        __('bride_wedding_hall') %> <% } %>
+    </b>
+</p>
+<p>
+    <a
+        href="tel:<% if (groom) { %> <%= __('groom_tel_contact') %> <% } else { %> <%= __('bride_tel_contact') %> <% } %>"
+        class="tel"
+    >
+        <% if (groom) { %> <%= __('groom_tel_contact') %> <% } else { %> <%=
+        __('bride_tel_contact') %> <% } %>
+    </a>
+</p>
+<p>
+    <% if (groom) { %> <%= __('groom_wedding_hall_address') %> <% } else { %>
+    <%= __('bride_wedding_hall_address') %> <% } %>
+</p>
+<p>
+    <small>
+        <% if (groom) { %> <%= __('groom_wedding_hall_address_notice') %> <% }
+        else { %> <%= __('bride_wedding_hall_address_notice') %> <% } %>
+    </small>
+</p>
 
 <ul>
     <li>
