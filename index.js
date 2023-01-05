@@ -24,6 +24,13 @@ i18n.configure({
 app.use(i18n.init);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  if (process.env.ENV == 'local') {
+    req.headers.host = process.env.GROOM_HOST;
+  }
+
+  next();
+});
 
 app.get("/", async (req, res) => {
   req.setLocale("vi");

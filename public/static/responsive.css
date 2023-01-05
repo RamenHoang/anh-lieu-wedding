@@ -35,14 +35,14 @@
         height: 50px;
     }
 
-    #play-audio-idx {
+    /* #play-audio-idx {
         width: 3rem;
         height: 3rem;
     }
 
     #play-audio-idx img {
         width: 1.4rem;
-    }
+    } */
 }
 
 @media only screen and (max-width: 540px) {
