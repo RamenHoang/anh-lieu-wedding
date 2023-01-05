@@ -612,8 +612,8 @@ body > a.share {
     align-items: center;
     background: rgba(25, 25, 25, 0.6);
     color: #ffffff;
-    width: 3rem;
-    height: 3rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 1.5rem;
     bottom: 0.7rem;
     right: -10rem;
@@ -622,7 +622,7 @@ body > a.share {
     transition: bottom 0.2s ease-in-out, right 0.2s ease-in-out, 0.2s ease;
 }
 body > a.share {
-    bottom: calc(3rem + 0.7rem + 0.7rem);
+    bottom: calc(1.5rem + 0.7rem + 0.7rem);
 }
 
 body > a.go-to-top:hover,
@@ -634,8 +634,8 @@ body > a.share:hover {
 body > a.go-to-top img,
 body > a.share img {
     display: block;
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 80%;
+    height: 80%;
 }
 
 body.after-story-each > a.go-to-top,
@@ -648,7 +648,7 @@ body.on-story-each > a.go-to-top {
     bottom: 160px;
 }
 body.on-story-each > a.share {
-    bottom: calc(3rem + 0.7rem + 160px);
+    bottom: calc(1.5rem + 0.7rem + 160px);
     right: 0.7rem;
 }
 
