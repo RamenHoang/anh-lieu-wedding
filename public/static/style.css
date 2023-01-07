@@ -388,6 +388,8 @@ section .clearfix:after {
 #pink-background {
     background: var(--pink-background);
     color: var(--pink-color);
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #wedding-photo {
@@ -414,10 +416,6 @@ section .clearfix:after {
     line-height: 1.2rem;
     margin: 0;
     text-align: center;
-}
-
-#location {
-    padding: 5vh 100px;
 }
 
 #location h4 {
