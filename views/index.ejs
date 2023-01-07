@@ -173,6 +173,18 @@
 
             var weddingDatetime = "<%= wedding_datetime %>";
             var audioPath = "<%= audio_path %>";
+
+            window.onload = function () {
+                document
+                    .getElementById("heart-loader-idx")
+                    .classList.add("hidden");
+                document
+                    .getElementById("come-in-btn-idx")
+                    .classList.remove("hidden");
+            };
+
+            document.body.style.overflow = "hidden";
+            document.body.style.height = "100%";
         </script>
         <script
             type="text/javascript"

@@ -17,6 +17,8 @@ function backgroundAudioInit() {
   }
 
   function playVideo() {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
     document.querySelector(".go-to.go-to-top").click();
     var comeInBackground = document.querySelector(".come-in-background");
     var comeInButton = document.querySelector("#come-in-btn-idx");
