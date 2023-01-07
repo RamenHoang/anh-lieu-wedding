@@ -11,7 +11,7 @@
 
 .tf {
   display: inline-block;
-  background: url('./icon-palette.png') no-repeat;
+  background: url('/static/icon-palette.png') no-repeat;
   background-size: calc(var(--tf-size-default) * 5) calc(var(--tf-size-default) * 2);
   width: var(--tf-size-default);
   height: var(--tf-size-default);
