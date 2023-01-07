@@ -67,10 +67,7 @@
     line-height: 1.5;
     padding: 1px 5px;
     font-size: 0.83em;
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-        Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-        "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol", sans-serif;
+    font-family: "PT Serif", Georgia, "Times New Roman", Times, serif;
     border-radius: 5px;
 }
 
@@ -88,29 +85,29 @@
     justify-content: space-between;
 }
 
-.col-2>div {
+.col-2 > div {
     position: relative;
     width: 45%;
 }
 
-.col-2>div input {
+.col-2 > div input {
     display: block;
     width: 100%;
 }
 
-.col-1>div {
+.col-1 > div {
     position: relative;
     width: 100%;
     display: contents;
 }
 
-.col-1>div textarea {
+.col-1 > div textarea {
     display: block;
     width: 100%;
     resize: vertical;
 }
 
-.col-1>div input {
+.col-1 > div input {
     display: block;
     width: 100%;
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
@@ -124,7 +121,7 @@
     transition: 0.2s ease;
 }
 
-.col-1>div input:hover {
+.col-1 > div input:hover {
     transition: 0.2s ease;
 }
 
@@ -174,6 +171,7 @@
     border: 2px solid red;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline: none;
 }

@@ -35,6 +35,12 @@
     width: 90%;
 }
 
+#come-in-btn-idx p {
+    font-family: "PT Serif", Georgia, "Times New Roman", Times, serif;
+    font-size: 2em;
+    font-style: italic;
+}
+
 .fading {
     animation: fadeIn 1s;
 }
