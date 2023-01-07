@@ -79,6 +79,7 @@
     border: none;
     cursor: pointer;
     background-color: var(--pink-background-color);
+    color: #f9f9f9;
 }
 
 .wish-control {

@@ -69,7 +69,7 @@ section .center {
 
 section .wrap {
     width: 100% !important;
-    max-width: 1400px;
+    /* max-width: 1400px; */
     padding: 0 10px;
     overflow: hidden;
     position: relative;
@@ -289,12 +289,14 @@ section .clearfix:after {
     text-align: right;
 }
 
-#story-each .together {
+#story-each .together.content {
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
-#story-each .together h3 {
+#story-each .together h3,
+#story-each .together p {
     text-align: center;
 }
 
@@ -690,8 +692,19 @@ body,
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    height: 100%;
-    width: auto;
     opacity: 0;
     transition: 0.3s ease;
+    width: 100% !important;
+    height: auto !important;
+}
+
+#pink-background section {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#location .photoset {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
