@@ -3,7 +3,7 @@
 <div class="wishes-container">
     <h5><%= __('let_leave_a_wish') %></h5>
     <div id="send-wish-idx">
-        <form method="POST" action="wishes">
+        <form id="send-wish-form-idx" method="POST" action="wishes">
             <div class="wish-control col-2">
                 <div class="content-left">
                     <input
@@ -36,13 +36,13 @@
             </div>
             <div class="wish-control col-1">
                 <div>
-                    <input id="send-wish-btn-idx" type="button" value="<%= __('send_wish') %>" />
+                    <button id="send-wish-btn-idx">
+                        <%= __('send_wish') %>
+                    </button>
                 </div>
             </div>
         </form>
     </div>
     <h5><%= __('thanks_to_wishes') %></h5>
-    <div id="view-wish-idx">
-        <%- include('./parts/wishes.ejs') %>
-    </div>
+    <div id="view-wish-idx"><%- include('./parts/wishes.ejs') %></div>
 </div>
