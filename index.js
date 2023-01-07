@@ -93,7 +93,8 @@ async function getWishes() {
   );
 
   const wishes = _rows.map(function (row) {
-    const wishData = row.split("\t");
+    console.log(row.trim());
+    const wishData = row.trim().split("\t");
 
     return {
       name: wishData[0],
@@ -102,5 +103,7 @@ async function getWishes() {
     };
   });
 
-  return wishes.reverse();
+  return wishes.reverse().filter(function(wish) {
+    return wish.name.length && wish.content.length;
+  });
 }
