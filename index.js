@@ -58,6 +58,11 @@ app.get("/", async (req, res) => {
 
 app.post("/wishes", async (req, res) => {
   try {
+    if (!req.body.name || !req.body.content) {
+      res.status(400);
+      return;
+    }
+
     await fileHandler.writeLine(
       path.join(__dirname, process.env.WISHES_DATA_FILENAME),
       [req.body.name, req.body.email, req.body.content]
