@@ -93,7 +93,6 @@ async function getWishes() {
   );
 
   const wishes = _rows.map(function (row) {
-    console.log(row.trim());
     const wishData = row.trim().split("\t");
 
     return {
