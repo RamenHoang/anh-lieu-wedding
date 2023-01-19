@@ -36,13 +36,13 @@ app.get("/", async (req, res) => {
     extra.map_path = process.env.GROOM_MAP_IMAGE_PATH;
     extra.groom = true;
     extra.bride = false;
-    extra.map_link = process.env.GROOM_GOOGLE_MAP_LINK;
+    extra.map_link = process.env.GROOM_MAP_IMAGE_PATH;
     extra.google_map_link = process.env.GROOM_GOOGLE_MAP_LINK;
   } else if (req.headers.host == process.env.BRIDE_HOST) {
     extra.map_path = process.env.BRIDE_MAP_IMAGE_PATH;
     extra.groom = false;
     extra.bride = true;
-    extra.map_link = process.env.BRIDE_GOOGLE_MAP_LINK;
+    extra.map_link = process.env.BRIDE_MAP_IMAGE_PATH;
     extra.google_map_link = process.env.BRIDE_GOOGLE_MAP_LINK;
   }
 
