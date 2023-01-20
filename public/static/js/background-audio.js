@@ -1,6 +1,7 @@
 function backgroundAudioInit() {
   var video = document.getElementById("my-video-idx");
   video.volume = 0.5;
+  video.disablePictureInPicture = true;
 
   var audioSwitch = document.getElementById("play-audio-idx");
   var volumeImage = document.getElementById("volume-image-idx");
