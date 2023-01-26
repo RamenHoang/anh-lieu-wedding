@@ -258,6 +258,10 @@
     .wishes-container h5 {
         font-size: 0.7rem;
     }
+
+    #story-together {
+        padding: 0;
+    }
 }
 
 @media only screen and (max-width: 414px) {
@@ -295,5 +299,12 @@
 
     #welcome p {
         font-size: 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 384px) {
+    #location ul li {
+        width: 100%;
+        padding: 0.1rem 0;
     }
 }
