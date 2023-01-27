@@ -1,8 +1,10 @@
 require("dotenv").config();
 const https = require("https");
+const http = require("http");
 const fs = require("fs");
 const express = require("express");
 const app = express();
+const httpApp = express();
 const path = require("path");
 const i18n = require("i18n");
 const fileHandler = require("./file-handler");
@@ -26,6 +28,10 @@ app.use((req, res, next) => {
   }
 
   next();
+});
+
+httpApp.get("*", (req, res, next) => {
+  res.redirect("https://" + req.headers.host + "/" + req.path);
 });
 
 app.get("/", async (req, res) => {
@@ -88,8 +94,11 @@ const httpsOptions = {
   ca: [fs.readFileSync(path.join(__dirname, process.env.SSL_CA_FILE_PATH))],
 };
 
+http.createServer(httpApp).listen(80, () => {
+  console.log(`HTTP Server is listening on port 80`);
+});
 https.createServer(httpsOptions, app).listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${process.env.PORT}`);
+  console.log(`HTTPS Server is listening on port ${process.env.PORT}`);
 });
 
 async function getWishes() {
