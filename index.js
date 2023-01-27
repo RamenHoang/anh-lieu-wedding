@@ -1,4 +1,6 @@
 require("dotenv").config();
+const https = require("https");
+const fs = require("fs");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -80,7 +82,13 @@ app.post("/wishes", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
+const httpsOptions = {
+  key: fs.readFileSync(path.join(__dirname, process.env.SSL_KEY_FILE_PATH)),
+  cert: fs.readFileSync(path.join(__dirname, process.env.SSL_CERT_FILE_PATH)),
+  ca: [fs.readFileSync(path.join(__dirname, process.env.SSL_CA_FILE_PATH))],
+};
+
+https.createServer(httpsOptions, app).listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${process.env.PORT}`);
 });
 
@@ -104,7 +112,7 @@ async function getWishes() {
     };
   });
 
-  return wishes.reverse().filter(function(wish) {
+  return wishes.reverse().filter(function (wish) {
     return wish.name.length && wish.content.length;
   });
 }
