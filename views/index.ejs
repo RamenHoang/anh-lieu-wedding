@@ -6,11 +6,7 @@
         <title><%=__('bride_groom_get_married')%></title>
         <link rel="stylesheet" href="/static/css/style.css" />
         <link rel="stylesheet" href="/static/css/photoswipe.css" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="/static/wedding-festival.png"
-        />
+        <link rel="icon" type="image/png" href="/static/wedding-festival.png" />
         <link rel="stylesheet" href="/static/css/background-audio.css" />
         <link rel="stylesheet" href="/static/css/wishes.css" />
         <link rel="stylesheet" href="/static/css/responsive.css" />
@@ -176,7 +172,7 @@
                 wheelToZoom: true,
                 allowPanToNext: true,
                 closeOnVerticalDrag: true,
-                arrowKeys: false
+                arrowKeys: false,
             });
             lightbox.init();
 
@@ -194,6 +190,9 @@
                 document
                     .getElementById("come-in-btn-idx")
                     .classList.remove("hidden");
+                document
+                    .getElementById("loading-idx")
+                    .classList.add("hidden");
             };
 
             document.body.style.overflow = "hidden";

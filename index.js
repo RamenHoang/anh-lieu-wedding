@@ -94,12 +94,18 @@ const httpsOptions = {
   ca: [fs.readFileSync(path.join(__dirname, process.env.SSL_CA_FILE_PATH))],
 };
 
-http.createServer(httpApp).listen(80, () => {
-  console.log(`HTTP Server is listening on port 80`);
-});
-https.createServer(httpsOptions, app).listen(process.env.PORT, () => {
-  console.log(`HTTPS Server is listening on port ${process.env.PORT}`);
-});
+if (process.env.ENV == "local") {
+  app.listen(process.env.PORT, () => {
+    console.log(`HTTP Server is listening on port ${process.env.PORT}`);
+  });
+} else {
+  http.createServer(httpApp).listen(80, () => {
+    console.log(`HTTP Server is listening on port 80`);
+  });
+  https.createServer(httpsOptions, app).listen(process.env.PORT, () => {
+    console.log(`HTTPS Server is listening on port ${process.env.PORT}`);
+  });
+}
 
 async function getWishes() {
   const _rows = [];
