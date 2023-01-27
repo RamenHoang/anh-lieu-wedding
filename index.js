@@ -34,7 +34,7 @@ httpApp.get("*", (req, res, next) => {
   res.redirect("https://" + req.headers.host + "/" + req.path);
 });
 
-app.get("/", async (req, res) => {
+app.get("", async (req, res) => {
   req.setLocale("vi");
 
   const wishes = await getWishes();
