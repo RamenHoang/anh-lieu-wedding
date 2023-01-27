@@ -111,4 +111,4 @@ wishes-data.txt
 # Inteliji
 .idea/
 
-public/.well-known/pki-validation/
+public/.well-known/
