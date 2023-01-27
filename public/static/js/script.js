@@ -191,10 +191,10 @@ function getAbsoluteTop(elem) {
       }
     } else if ($a.classList.contains("share")) {
       e.preventDefault();
-      window.navigator.share({
-        title: "2022.10.01. 이재영♥조소영 결혼합니다",
-        text: "2022년 10월 1일\n이재영 ♥ 조소영 결혼합니다.\n\n서로를 보듬어주고 지켜주며 다져온 인연을\n이제는 부부로서 이어가고자 합니다.\n눈부시게 푸르른 가을 하늘 아래\n새로이 함께하는 저희 두 사람의 모습을\n축복의 박수로 격려 부탁드립니다.\n\n2022년 10월 1일\n서초 더화이트베일 V홀",
-        url: "https://rosy.day",
+      navigator.share({
+        title: shareTitle,
+        text: shareText,
+        url: shareURL,
       });
     }
   });
