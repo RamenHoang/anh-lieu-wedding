@@ -107,3 +107,8 @@ dist
 docker
 
 wishes-data.txt
+
+# Inteliji
+.idea/
+
+public/.well-known/
