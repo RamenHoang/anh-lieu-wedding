@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 });
 
 httpApp.get("*", (req, res, next) => {
-  res.redirect("https://" + req.headers.host + "/" + req.path);
+  res.redirect("https://" + req.headers.host);
 });
 
 app.get("", async (req, res) => {
