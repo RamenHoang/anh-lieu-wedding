@@ -114,12 +114,16 @@
             <section id="wedding-photo">
                 <%- include('./components/wedding-photo.ejs') %>
             </section>
+        </div>
 
+        <section id="wishes"><%- include('./components/wishes.ejs') %></section>
+
+        <div id="pink-background">
             <section id="welcome">
                 <%- include('./components/welcome.ejs') %>
             </section>
 
-            <section id="location">
+            <section id="location">`
                 <%- include('./components/location.ejs') %>
             </section>
 
@@ -127,8 +131,6 @@
                 <%- include('./components/thanks-to.ejs') %>
             </section>
         </div>
-
-        <section id="wishes"><%- include('./components/wishes.ejs') %></section>
 
         <a class="go-to go-to-top" href="#top">
             <img src="/static/top-icon.svg" />
@@ -190,9 +192,7 @@
                 document
                     .getElementById("come-in-btn-idx")
                     .classList.remove("hidden");
-                document
-                    .getElementById("loading-idx")
-                    .classList.add("hidden");
+                document.getElementById("loading-idx").classList.add("hidden");
             };
 
             document.body.style.overflow = "hidden";
