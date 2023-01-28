@@ -8,7 +8,7 @@ function removeInputErrorStyle(e) {
   }
 }
 
-function sendWish(senderName, senderContent, senderEmail, wishes) {
+function sendWish(senderName, senderContent, wishes) {
   return function (e) {
     e.preventDefault();
 
@@ -24,12 +24,10 @@ function sendWish(senderName, senderContent, senderEmail, wishes) {
       axios
         .post("/wishes", {
           name: senderName.value,
-          email: senderEmail.value,
           content: senderContent.value,
         })
         .then(function (response) {
           senderName.value = null;
-          senderEmail.value = null;
           senderContent.value = null;
 
           wishes.innerHTML = response.data;
@@ -44,7 +42,6 @@ function sendWish(senderName, senderContent, senderEmail, wishes) {
 function init() {
   var sendWishBtn = document.getElementById("send-wish-btn-idx");
   var senderName = document.getElementById("username-wish-idx");
-  var senderEmail = document.getElementById("email-wish-idx");
   var senderContent = document.getElementById("content-wish-idx");
   var wishes = document.getElementById("view-wish-idx");
 
@@ -56,7 +53,7 @@ function init() {
 
   sendWishBtn.addEventListener(
     "click",
-    sendWish(senderName, senderContent, senderEmail, wishes)
+    sendWish(senderName, senderContent, wishes)
   );
 }
 

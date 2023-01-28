@@ -114,8 +114,6 @@
         Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
         "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
         "Segoe UI Symbol", sans-serif;
-    background-color: var(--pink-background-color);
-    color: #ffffff;
     cursor: pointer;
     border: none;
     transition: 0.2s ease;
