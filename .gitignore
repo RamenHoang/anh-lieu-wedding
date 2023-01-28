@@ -112,3 +112,6 @@ wishes-data.txt
 .idea/
 
 public/.well-known/
+
+ssl/*.key
+ssl/*.crt
