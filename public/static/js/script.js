@@ -194,7 +194,7 @@ function getAbsoluteTop(elem) {
       navigator.share({
         title: shareTitle,
         text: shareText,
-        url: shareURL,
+        url: '',
       });
     }
   });

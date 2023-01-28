@@ -1,6 +1,10 @@
 require("dotenv").config();
+const https = require("https");
+const http = require("http");
+const fs = require("fs");
 const express = require("express");
 const app = express();
+const httpApp = express();
 const path = require("path");
 const i18n = require("i18n");
 const fileHandler = require("./file-handler");
@@ -26,7 +30,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", async (req, res) => {
+httpApp.get("*", (req, res, next) => {
+  res.redirect("https://" + req.headers.host);
+});
+
+app.get("", async (req, res) => {
   req.setLocale("vi");
 
   const wishes = await getWishes();
@@ -80,9 +88,24 @@ app.post("/wishes", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${process.env.PORT}`);
-});
+const httpsOptions = {
+  key: fs.readFileSync(path.join(__dirname, process.env.SSL_KEY_FILE_PATH)),
+  cert: fs.readFileSync(path.join(__dirname, process.env.SSL_CERT_FILE_PATH)),
+  ca: [fs.readFileSync(path.join(__dirname, process.env.SSL_CA_FILE_PATH))],
+};
+
+if (process.env.ENV == "local") {
+  app.listen(process.env.PORT, () => {
+    console.log(`HTTP Server is listening on port ${process.env.PORT}`);
+  });
+} else {
+  http.createServer(httpApp).listen(80, () => {
+    console.log(`HTTP Server is listening on port 80`);
+  });
+  https.createServer(httpsOptions, app).listen(process.env.PORT, () => {
+    console.log(`HTTPS Server is listening on port ${process.env.PORT}`);
+  });
+}
 
 async function getWishes() {
   const _rows = [];
@@ -104,7 +127,7 @@ async function getWishes() {
     };
   });
 
-  return wishes.reverse().filter(function(wish) {
+  return wishes.reverse().filter(function (wish) {
     return wish.name.length && wish.content.length;
   });
 }
