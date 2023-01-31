@@ -24,7 +24,7 @@ async function processLineByLine(filePath, callback) {
 }
 
 async function writeLine(filePath, data) {
-  data[1] = data[1].split('\n').join('. ');
+  data[2] = data[2].split('\n').join('. ');
 
   try {
     return await fs.promises.appendFile(filePath, "\n" + data.join("\t"), {
