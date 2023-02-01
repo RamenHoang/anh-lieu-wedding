@@ -62,6 +62,7 @@ app.get("", async (req, res) => {
     wedding_datetime: process.env.WEDDING_DATETIME,
     audio_path: process.env.AUDIO_PATH,
     wishes: wishes,
+    cache_max_age: process.env.CACHE_MAGE_AGE,
     ...extra,
   });
 });
