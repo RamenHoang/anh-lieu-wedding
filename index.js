@@ -3,6 +3,7 @@ const https = require("https");
 const http = require("http");
 const fs = require("fs");
 const express = require("express");
+const compression = require("compression");
 const app = express();
 const httpApp = express();
 const path = require("path");
@@ -11,9 +12,11 @@ const fileHandler = require("./file-handler");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public"), {
-  maxAge: process.env.CACHE_MAGE_AGE
-}));
+app.use(
+  express.static(path.join(__dirname, "public"), {
+    maxAge: process.env.CACHE_MAGE_AGE,
+  })
+);
 i18n.configure({
   locales: ["en", "vi"],
   directory: path.join(__dirname, "locales"),
@@ -31,6 +34,7 @@ app.use((req, res, next) => {
 
   next();
 });
+app.use(compression());
 
 httpApp.get("*", (req, res, next) => {
   res.redirect("https://" + req.headers.host);
