@@ -11,7 +11,9 @@ const fileHandler = require("./file-handler");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), {
+  maxAge: process.env.CACHE_MAGE_AGE
+}));
 i18n.configure({
   locales: ["en", "vi"],
   directory: path.join(__dirname, "locales"),
@@ -62,6 +64,7 @@ app.get("", async (req, res) => {
     wedding_datetime: process.env.WEDDING_DATETIME,
     audio_path: process.env.AUDIO_PATH,
     wishes: wishes,
+    cache_max_age: process.env.CACHE_MAGE_AGE,
     ...extra,
   });
 });
