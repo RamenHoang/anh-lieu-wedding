@@ -9,6 +9,7 @@ const path = require("path");
 const i18n = require("i18n");
 const fileHandler = require("./file-handler");
 
+app.disable("x-powered-by");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public"), {
