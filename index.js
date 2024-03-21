@@ -65,6 +65,7 @@ app.get("", async (req, res) => {
     audio_path: process.env.AUDIO_PATH,
     wishes: wishes,
     cache_max_age: process.env.CACHE_MAGE_AGE,
+    cdn_url: process.env.CDN_URL,
     ...extra,
   });
 });
