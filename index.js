@@ -92,17 +92,16 @@ app.post("/wishes", async (req, res) => {
   }
 });
 
-const httpsOptions = {
-  key: fs.readFileSync(path.join(__dirname, process.env.SSL_KEY_FILE_PATH)),
-  cert: fs.readFileSync(path.join(__dirname, process.env.SSL_CERT_FILE_PATH)),
-  ca: [fs.readFileSync(path.join(__dirname, process.env.SSL_CA_FILE_PATH))],
-};
-
 if (process.env.ENV == "local") {
   app.listen(process.env.PORT, () => {
     console.log(`HTTP Server is listening on port ${process.env.PORT}`);
   });
 } else {
+  const httpsOptions = {
+    key: fs.readFileSync(path.join(__dirname, process.env.SSL_KEY_FILE_PATH)),
+    cert: fs.readFileSync(path.join(__dirname, process.env.SSL_CERT_FILE_PATH)),
+    ca: [fs.readFileSync(path.join(__dirname, process.env.SSL_CA_FILE_PATH))],
+  };
   http.createServer(httpApp).listen(80, () => {
     console.log(`HTTP Server is listening on port 80`);
   });
