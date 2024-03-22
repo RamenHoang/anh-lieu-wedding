@@ -86,7 +86,7 @@
     }
 
     #front p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     #story-each h3 {
@@ -94,7 +94,7 @@
     }
 
     #story-each p {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     #location ul li a {
@@ -228,6 +228,25 @@
     #front a.go-to-welcome img {
         height: 1.2rem;
     }
+    #front a.go-to {
+        width: 160px;
+        height: 3.4rem;
+    }
+    #front a.go-to p {
+        font-size: 0.5rem;
+    }
+    #front a.go-to-wedding {
+        left: 0.7rem;
+    }
+    #front a.go-to-welcome {
+        right: 0.7rem;
+    }
+    #front h2#groom-and-bridal-label-idx {
+        font-size: 1rem;
+    }
+    #front p#become-mate-label-idx {
+        font-size: 0.7rem;
+    }
 
     .guestbook,
     .wedding-festival {
@@ -261,6 +280,11 @@
 
     #story-together {
         padding: 0;
+    }
+
+    #language-switcher {
+        margin-top: 0.1rem;
+        margin-right: 0.1rem;
     }
 }
 
