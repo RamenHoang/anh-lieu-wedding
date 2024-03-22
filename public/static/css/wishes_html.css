@@ -134,7 +134,7 @@
 }
 
 .guestbook {
-    background-image: url(/public/static/guestbook.png);
+    background-image: url(../guestbook.png);
     width: var(--tf-size-default);
     height: var(--tf-size-default);
     display: inline-block;
@@ -147,7 +147,7 @@
 }
 
 .wedding-festival {
-    background-image: url(/public/static/wedding-festival-bg.png);
+    background-image: url(../wedding-festival-bg.png);
     width: var(--tf-size-default);
     height: var(--tf-size-default);
     display: inline-block;
