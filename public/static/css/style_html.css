@@ -216,11 +216,9 @@ section .clearfix:after {
     display: block;
     font-size: 0.8rem;
     line-height: 1.4rem;
-    width: 6rem;
+    /* width: 6rem; */
     height: 1.4rem;
-
     padding-top: 2.2rem;
-
     position: absolute;
     bottom: 8.5vh;
     left: 15%;
@@ -667,6 +665,7 @@ body.on-story-each > a.share {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
     background-color: var(--pink-background-color);
 }
 

@@ -124,19 +124,19 @@
                     <div id="time-counter-container">
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-day-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3 id="counter-day-label-idx">Ngày</h3></div>
+                        <div class="counter-datetime-unit"><h5 id="counter-day-label-idx">Ngày</h5></div>
                       </div>
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-hour-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3 id="counter-hour-label-idx">Giờ</h3></div>
+                        <div class="counter-datetime-unit"><h5 id="counter-hour-label-idx">Giờ</h5></div>
                       </div>
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-minute-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3 id="counter-minute-label-idx">Phút</h3></div>
+                        <div class="counter-datetime-unit"><h5 id="counter-minute-label-idx">Phút</h5></div>
                       </div>
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-second-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3 id="counter-second-label-idx">Giây</h3></div>
+                        <div class="counter-datetime-unit"><h5 id="counter-second-label-idx">Giây</h5></div>
                       </div>
                     </div>
                   </div>
@@ -1397,29 +1397,29 @@
                         "thank-to-02-label-idx": "Cô dâu, chú rể hứa sẽ sống với nhau thật hạnh phúc"
                     },
                     en: {
-                        "counter-day-label-idx": "Date",
-                         "counter-hour-label-idx": "Hour",
-                         "counter-minute-label-idx": "Minute",
-                         "counter-second-label-idx": "Second",
-                         "groom-and-bridal-label-idx": "Mr. Nguyen & Lieu Le",
-                         "become-mate-label-idx": "We have come home together!",
-                         "watch-wedding-photo-label-idx": "Watch wedding photos",
-                         "invite-to-party-label-idx": "Invite to party",
-                         "mini-groom-label-idx": "mini-groom",
+                        "counter-day-label-idx": "Days",
+                         "counter-hour-label-idx": "Hours",
+                         "counter-minute-label-idx": "Minutes",
+                         "counter-second-label-idx": "Seconds",
+                         "groom-and-bridal-label-idx": "Anh Nguen & Lieu Le",
+                         "become-mate-label-idx": "We have become husband and wife",
+                         "watch-wedding-photo-label-idx": "Wedding photos",
+                         "invite-to-party-label-idx": "To party",
+                         "mini-groom-label-idx": "Mini groom",
                          "mini-groom-description-label-idx": "At that time, he was still small and mischievous",
                          "mini-bride-label-idx": "Mini bride",
-                         "mini-bride-description-label-idx": "At that time, you were small and cute",
-                         "child-groom-label-idx": "Children's groom",
+                         "mini-bride-description-label-idx": "And she was small and cute",
+                         "child-groom-label-idx": "Child groom",
                          "child-groom-description-label-idx": "A little older, he's still as playful as before",
                          "child-bride-label-idx": "Child bride",
                          "child-bride-description-label-idx": "The little girl is more obedient and gentle",
                          "teen-groom-label-idx": "Teen Groom",
-                         "teen-groom-description-label-idx": "And then he became a young man",
-                         "teen-bride-label-idx": "teen bride",
+                         "teen-groom-description-label-idx": "As time passed, he became a young man",
+                         "teen-bride-label-idx": "Teen bride",
                          "teen-bride-description-label-idx": "The little girl has become a beautiful young woman",
                          "agree-date-label-idx": "We have agreed to be lovers and start dating from now on",
                          "and-next-chapter-lable-idx": "And then",
-                         "wedding-photo-label-idx": "We have come home together",
+                         "wedding-photo-label-idx": "We have become husband and wife",
                          "thank-to-01-label-idx": "Thank you, grandparents, aunts, uncles, brothers, sisters, brothers and sisters for coming and celebrating with the bride and groom",
                          "thank-to-02-label-idx": "The bride and groom promise to live happily together"
                     },
@@ -1440,6 +1440,7 @@
 
             function setLanguage(lang) {
                 document.documentElement.lang = lang;
+                localStorage.setItem("lang", lang);
                 document.querySelectorAll(".language-switcher-btn").forEach(function (btn) {
                     btn.classList.remove("active");
                 });
@@ -1448,14 +1449,15 @@
             }
 
             function updateTexts() {
-                dict = dictionary[document.documentElement.lang];
+                lang = localStorage.getItem("lang") || document.documentElement.lang;
+                dict = dictionary[lang];
                 for (var key in dict) {
                     document.getElementById(key).innerText = dict[key];
                 }
             }
 
             // Set initial language
-            setLanguage(document.documentElement.lang);
+            setLanguage(localStorage.getItem("lang") || document.documentElement.lang);
         </script>
         <script
             type="text/javascript"
@@ -1465,7 +1467,7 @@
         <script
             type="text/javascript"
             charset="UTF-8"
-            src="./public/static/js/background-audio.js"
+            src="./public/static/js/background-audio_html.js"
         ></script>
         <script
             type="text/javascript"
