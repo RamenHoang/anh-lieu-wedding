@@ -45,9 +45,48 @@
         />
         <meta property="twitter:description" content="Đám cưới hạnh phúc" />
         <meta property="twitter:image" content="./public/photos/meta/image.jpg" />
+
+        <style>
+            #language-switcher {
+                position: fixed;
+                top: 0.7rem;
+                right: 0.7rem;
+                z-index: 999;
+                border-radius: 5px;
+            }
+
+            #language-switcher button {
+                border: none;
+                color: #ffffff;
+                padding: 8px 12px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                background-color: rgba(25, 25, 25, 0.6);
+                /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+            }
+
+            #language-switcher button:hover {
+                background-color: rgba(116, 116, 116, 0.6) !important;
+            }
+
+            #language-switcher button:not(:last-child) {
+                margin-right: 5px;
+            }
+
+            #language-switcher button.active {
+                background-color: rgba(72, 72, 72, 0.6);
+                color: var(--pink-background-color-lighter);
+            }
+        </style>
     </head>
 
     <body>
+        <div id="language-switcher">
+            <button id="language-switcher-en" class="language-switcher-btn" onclick="setLanguage('en')">EN</button>
+            <button id="language-switcher-vi" class="language-switcher-btn" onclick="setLanguage('vi')">VI</button>
+        </div>
+
         <div class="come-in">
             <div class="come-in-background">
                 <div class="middle">
@@ -85,38 +124,38 @@
                     <div id="time-counter-container">
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-day-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3>Ngày</h3></div>
+                        <div class="counter-datetime-unit"><h3 id="counter-day-label-idx">Ngày</h3></div>
                       </div>
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-hour-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3>Giờ</h3></div>
+                        <div class="counter-datetime-unit"><h3 id="counter-hour-label-idx">Giờ</h3></div>
                       </div>
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-minute-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3>Phút</h3></div>
+                        <div class="counter-datetime-unit"><h3 id="counter-minute-label-idx">Phút</h3></div>
                       </div>
                       <div>
                         <div class="counter-datetime-box"><h2 id="counter-second-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h3>Giây</h3></div>
+                        <div class="counter-datetime-unit"><h3 id="counter-second-label-idx">Giây</h3></div>
                       </div>
                     </div>
                   </div>
             </div>
             <div class="wrap center">
-                <h2>Anh Nguyễn & Liễu Lê</h2>
-                <p>Chúng mình đã về chung một nhà!</p>
+                <h2 id="groom-and-bridal-label-idx">Anh Nguyễn & Liễu Lê</h2>
+                <p id="become-mate-label-idx">Chúng mình đã về chung một nhà!</p>
             </div>
 
             <div class="overlay"></div>
 
             <a class="go-to go-to-wedding" href="#wedding-photo" data-margin-top="120">
                 <img src="./public/static/wedding-couple-icon.svg" />
-                Xem ảnh cưới
+                <p id="watch-wedding-photo-label-idx">Xem ảnh cưới</p>
             </a>
 
             <a class="go-to go-to-welcome" href="#location">
                 <img src="./public/static/map-icon.svg" />
-                Mời dự tiệc
+                <p id="invite-to-party-label-idx">Mời dự tiệc</p>
             </a>
 
         </section>
@@ -124,7 +163,7 @@
         <section id="story-each">
             <div class="wrap clearfix">
                 <div class="content groom">
-                    <h3>Chú rể tí hon</h3>
+                    <h3 id="mini-groom-label-idx">Chú rể tí hon</h3>
 
                     <div class="photoset">
                         <div class="photoset-row">
@@ -149,12 +188,12 @@
                         </div>
                     </div>
 
-                    <p>Khi ấy, cu cậu còn nhỏ và nghịch ngợm</p>
+                    <p id="mini-groom-description-label-idx">Khi ấy, cu cậu còn nhỏ và nghịch ngợm</p>
 
                 </div>
 
                 <div class="content bride">
-                    <h3>Cô dâu tí hon</h3>
+                    <h3 id="mini-bride-label-idx">Cô dâu tí hon</h3>
 
                     <div class="photoset">
                         <div class="photoset-row">
@@ -179,11 +218,11 @@
                         </div>
                     </div>
 
-                    <p>Còn cô bé thì dễ thương chưa nè</p>
+                    <p id="mini-bride-description-label-idx">Còn cô bé thì dễ thương chưa nè</p>
                 </div>
 
                 <div class="content groom">
-                    <h3>Chú rể thiếu nhi</h3>
+                    <h3 id="child-groom-label-idx">Chú rể thiếu nhi</h3>
 
                     <div class="photoset">
                         <div class="photoset-row">
@@ -217,12 +256,12 @@
                         </div>
                     </div>
 
-                    <p>Lớn hơn một chút, cu cậu vẫn nghịch như xưa</p>
+                    <p id="child-groom-description-label-idx">Lớn hơn một chút, cu cậu vẫn nghịch như xưa</p>
 
                 </div>
 
                 <div class="content bride">
-                    <h3>Cô dâu thiếu nhi</h3>
+                    <h3 id="child-bride-label-idx">Cô dâu thiếu nhi</h3>
 
                     <div class="photoset">
                         <div class="photoset-row">
@@ -247,12 +286,12 @@
                         </div>
                     </div>
 
-                    <p>"Cô bé thì ngoan và hiền hơn</p>
+                    <p id="child-bride-description-label-idx">"Cô bé thì ngoan và hiền hơn</p>
 
                 </div>
 
                 <div class="content groom">
-                    <h3>Chú rể mới lớn</h3>
+                    <h3 id="teen-groom-label-idx">Chú rể mới lớn</h3>
 
                     <div class="photoset">
                         <div class="photoset-row">
@@ -297,12 +336,12 @@
                         </div>
                     </div>
 
-                    <p>Và rồi cu cậu đã trở thành một cậu thanh niên</p>
+                    <p id="teen-groom-description-label-idx">Và rồi cu cậu đã trở thành một cậu thanh niên</p>
 
                 </div>
 
                 <div class="content bride">
-                    <h3>Cô dâu mới lớn</h3>
+                    <h3 id="teen-bride-label-idx">Cô dâu mới lớn</h3>
 
                     <div class="photoset">
                         <div class="photoset-row">
@@ -327,7 +366,7 @@
                         </div>
                     </div>
 
-                    <p>Cô bé ngày nào đã trở thành một thiếu nữ xinh đẹp</p>
+                    <p id="teen-bride-description-label-idx">Cô bé ngày nào đã trở thành một thiếu nữ xinh đẹp</p>
 
                 </div>
             </div>
@@ -350,7 +389,7 @@
                         </div>
                     </div>
 
-                    <p>Chúng mình đã đồng ý làm người yêu và bắt đầu hẹn hò từ đây</p>
+                    <p id="agree-date-label-idx">Chúng mình đã đồng ý làm người yêu và bắt đầu hẹn hò từ đây</p>
                 </div>
 
             </div>
@@ -742,7 +781,7 @@
             <div class="icon-tray">
                 <span class="tf xsmall couple"></span>
             </div>
-            <p>Và rồi</p>
+            <p id="and-next-chapter-lable-idx">Và rồi</p>
             <p>2023. 02. 06</p>
             <p>&nbsp;</p>
             <span class="wedding-festival"></span>
@@ -750,7 +789,7 @@
 
         <div id="pink-background">
             <section id="wedding-photo">
-                <p>Chúng mình đã về chung một nhà</p>
+                <p id="wedding-photo-label-idx">Chúng mình đã về chung một nhà</p>
 
                 <div class="photoset">
                     <div class="photoset-row">
@@ -1270,8 +1309,8 @@
                     <span class="tf xsmall woman-with-veil"></span>
                 </p>
 
-                <p>Cảm ơn các ông, bà, cô, dì, chú, bác, anh, chị, em đã tới và chung vui cùng cô dâu và chú rể</p>
-                <p>Cô dâu, chú rể hứa sẽ sống với nhau thật hạnh phúc</p>
+                <p id="thank-to-01-label-idx">Cảm ơn các ông, bà, cô, dì, chú, bác, anh, chị, em đã tới và chung vui cùng cô dâu và chú rể</p>
+                <p id="thank-to-02-label-idx">Cô dâu, chú rể hứa sẽ sống với nhau thật hạnh phúc</p>
 
             </section>
         </div>
@@ -1329,6 +1368,63 @@
             var shareText = "023. 02. 06. Chúng mình sẽ nên đôi";
             var shareURL = "";
 
+            var dictionary = {
+                    vi: {
+                        "counter-day-label-idx": "Ngày",
+                        "counter-hour-label-idx": "Giờ",
+                        "counter-minute-label-idx": "Phút",
+                        "counter-second-label-idx": "Giây",
+                        "groom-and-bridal-label-idx": "Anh Nguyễn & Liễu Lê",
+                        "become-mate-label-idx": "Chúng mình đã về chung một nhà!",
+                        "watch-wedding-photo-label-idx": "Xem ảnh cưới",
+                        "invite-to-party-label-idx": "Mời dự tiệc",
+                        "mini-groom-label-idx": "Chú rể tí hon",
+                        "mini-groom-description-label-idx": "Khi ấy, cu cậu còn nhỏ và nghịch ngợm",
+                        "mini-bride-label-idx": "Cô dâu tí hon",
+                        "mini-bride-description-label-idx": "Khi ấy, cô cậu còn nhỏ và dễ thương",
+                        "child-groom-label-idx": "Chú rể thiếu nhi",
+                        "child-groom-description-label-idx": "Lớn hơn một chút, cu cậu vẫn nghịch như xưa",
+                        "child-bride-label-idx": "Cô dâu thiếu nhi",
+                        "child-bride-description-label-idx": "Cô bé thì ngoan và hiền hơn",
+                        "teen-groom-label-idx": "Chú rể mới lớn",
+                        "teen-groom-description-label-idx": "Và rồi cu cậu đã trở thành một cậu thanh niên",
+                        "teen-bride-label-idx": "Cô dâu mới lớn",
+                        "teen-bride-description-label-idx": "Cô bé ngày nào đã trở thành một thiếu nữ xinh đẹp",
+                        "agree-date-label-idx": "Chúng mình đã đồng ý làm người yêu và bắt đầu hẹn hò từ đây",
+                        "and-next-chapter-lable-idx": "Và rồi",
+                        "wedding-photo-label-idx": "Chúng mình đã về chung một nhà",
+                        "thank-to-01-label-idx": "Cảm ơn các ông, bà, cô, dì, chú, bác, anh, chị, em đã tới và chung vui cùng cô dâu và chú rể",
+                        "thank-to-02-label-idx": "Cô dâu, chú rể hứa sẽ sống với nhau thật hạnh phúc"
+                    },
+                    en: {
+                        "counter-day-label-idx": "Date",
+                         "counter-hour-label-idx": "Hour",
+                         "counter-minute-label-idx": "Minute",
+                         "counter-second-label-idx": "Second",
+                         "groom-and-bridal-label-idx": "Mr. Nguyen & Lieu Le",
+                         "become-mate-label-idx": "We have come home together!",
+                         "watch-wedding-photo-label-idx": "Watch wedding photos",
+                         "invite-to-party-label-idx": "Invite to party",
+                         "mini-groom-label-idx": "mini-groom",
+                         "mini-groom-description-label-idx": "At that time, he was still small and mischievous",
+                         "mini-bride-label-idx": "Mini bride",
+                         "mini-bride-description-label-idx": "At that time, you were small and cute",
+                         "child-groom-label-idx": "Children's groom",
+                         "child-groom-description-label-idx": "A little older, he's still as playful as before",
+                         "child-bride-label-idx": "Child bride",
+                         "child-bride-description-label-idx": "The little girl is more obedient and gentle",
+                         "teen-groom-label-idx": "Teen Groom",
+                         "teen-groom-description-label-idx": "And then he became a young man",
+                         "teen-bride-label-idx": "teen bride",
+                         "teen-bride-description-label-idx": "The little girl has become a beautiful young woman",
+                         "agree-date-label-idx": "We have agreed to be lovers and start dating from now on",
+                         "and-next-chapter-lable-idx": "And then",
+                         "wedding-photo-label-idx": "We have come home together",
+                         "thank-to-01-label-idx": "Thank you, grandparents, aunts, uncles, brothers, sisters, brothers and sisters for coming and celebrating with the bride and groom",
+                         "thank-to-02-label-idx": "The bride and groom promise to live happily together"
+                    },
+                };
+
             window.onload = function () {
                 document
                     .getElementById("heart-loader-idx")
@@ -1341,6 +1437,25 @@
 
             document.body.style.overflow = "hidden";
             document.body.style.height = "100%";
+
+            function setLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll(".language-switcher-btn").forEach(function (btn) {
+                    btn.classList.remove("active");
+                });
+                document.getElementById("language-switcher-" + lang).classList.add("active");
+                updateTexts();
+            }
+
+            function updateTexts() {
+                dict = dictionary[document.documentElement.lang];
+                for (var key in dict) {
+                    document.getElementById(key).innerText = dict[key];
+                }
+            }
+
+            // Set initial language
+            setLanguage(document.documentElement.lang);
         </script>
         <script
             type="text/javascript"
