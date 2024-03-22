@@ -241,9 +241,7 @@ section .clearfix:after {
     line-height: 1.4rem;
     width: 6rem;
     height: 1.4rem;
-
     padding-top: 2.2rem;
-
     position: absolute;
     bottom: 8.5vh;
     right: 15%;
@@ -635,6 +633,40 @@ body > a.share img {
     height: 80%;
 }
 
+#language-switcher {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    border-radius: 5px;
+    margin-right: 0.7rem;
+    margin-top: 0.7rem;
+}
+
+#language-switcher button {
+    border: none;
+    color: #ffffff;
+    padding: 5px 10px;
+    font-size: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: rgba(25, 25, 25, 0.6);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+#language-switcher button:hover {
+    background-color: rgba(116, 116, 116, 0.6) !important;
+}
+
+/* #language-switcher button:not(:last-child) {
+    margin-right: 5px;
+} */
+
+#language-switcher button.active {
+    background-color: rgba(72, 72, 72, 0.6);
+    color: var(--pink-background-color-lighter);
+}
+
 body.after-story-each > a.go-to-top,
 body.after-story-each > a.share {
     right: 0.7rem;
@@ -655,6 +687,7 @@ body.on-story-each > a.share {
     margin: auto;
     justify-content: space-around;
     margin-bottom: 50px;
+    padding-top: 2rem;
 }
 
 #time-counter-container .counter-datetime-box {

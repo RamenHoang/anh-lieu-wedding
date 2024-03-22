@@ -45,40 +45,6 @@
         />
         <meta property="twitter:description" content="Đám cưới hạnh phúc" />
         <meta property="twitter:image" content="./public/photos/meta/image.jpg" />
-
-        <style>
-            #language-switcher {
-                position: fixed;
-                top: 0.7rem;
-                right: 0.7rem;
-                z-index: 999;
-                border-radius: 5px;
-            }
-
-            #language-switcher button {
-                border: none;
-                color: #ffffff;
-                padding: 8px 12px;
-                font-size: 16px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-                background-color: rgba(25, 25, 25, 0.6);
-                /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-            }
-
-            #language-switcher button:hover {
-                background-color: rgba(116, 116, 116, 0.6) !important;
-            }
-
-            #language-switcher button:not(:last-child) {
-                margin-right: 5px;
-            }
-
-            #language-switcher button.active {
-                background-color: rgba(72, 72, 72, 0.6);
-                color: var(--pink-background-color-lighter);
-            }
-        </style>
     </head>
 
     <body>
@@ -95,10 +61,14 @@
                             <div></div>
                         </div>
                     </div>
-                    <div id="loading-idx" style=" font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif; font-style: italic; color: black;">Đang tải ...</div>
+                    <div id="loading-idx" style=" font-family: 'PT Serif', Georgia, 'Times New Roman', Times, serif; font-style: italic; color: black;">
+                        <p>Đang tải ...</p>
+                        <p>Loading ...</p>
+                    </div>
                     <button id="come-in-btn-idx" class="hidden">
                         <img src="./public/static/hy-literal.png" />
                         <p>>>> Chạm vào đây nhé <<<</p>
+                        <p>>>> Touch here <<<</p>
                     </button>
                 </div>
             </div>
@@ -123,20 +93,20 @@
                 <div id="time-counter">
                     <div id="time-counter-container">
                       <div>
-                        <div class="counter-datetime-box"><h2 id="counter-day-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h5 id="counter-day-label-idx">Ngày</h5></div>
+                        <div class="counter-datetime-box"><h2 id="counter-day-idx"></h2></div>
+                        <!-- <div class="counter-datetime-unit"><p id="counter-day-label-idx">Ngày</p></div> -->
                       </div>
                       <div>
-                        <div class="counter-datetime-box"><h2 id="counter-hour-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h5 id="counter-hour-label-idx">Giờ</h5></div>
+                        <div class="counter-datetime-box"><h2 id="counter-hour-idx"></h2></div>
+                        <!-- <div class="counter-datetime-unit"><p id="counter-hour-label-idx">Giờ</p></div> -->
                       </div>
                       <div>
-                        <div class="counter-datetime-box"><h2 id="counter-minute-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h5 id="counter-minute-label-idx">Phút</h5></div>
+                        <div class="counter-datetime-box"><h2 id="counter-minute-idx"></h2></div>
+                        <!-- <div class="counter-datetime-unit"><p id="counter-minute-label-idx">Phút</p></div> -->
                       </div>
                       <div>
-                        <div class="counter-datetime-box"><h2 id="counter-second-idx"></h2></div><br>
-                        <div class="counter-datetime-unit"><h5 id="counter-second-label-idx">Giây</h5></div>
+                        <div class="counter-datetime-box"><h2 id="counter-second-idx"></h2></div>
+                        <!-- <div class="counter-datetime-unit"><p id="counter-second-label-idx">Giây</p></div> -->
                       </div>
                     </div>
                   </div>
@@ -148,15 +118,17 @@
 
             <div class="overlay"></div>
 
-            <a class="go-to go-to-wedding" href="#wedding-photo" data-margin-top="120">
-                <img src="./public/static/wedding-couple-icon.svg" />
-                <p id="watch-wedding-photo-label-idx">Xem ảnh cưới</p>
-            </a>
+            <div class="go-to-wrap">
+                <a class="go-to go-to-wedding" href="#wedding-photo" data-margin-top="120">
+                    <img src="./public/static/wedding-couple-icon.svg" />
+                    <p id="watch-wedding-photo-label-idx">Xem ảnh cưới</p>
+                </a>
 
-            <a class="go-to go-to-welcome" href="#location">
-                <img src="./public/static/map-icon.svg" />
-                <p id="invite-to-party-label-idx">Mời dự tiệc</p>
-            </a>
+                <a class="go-to go-to-welcome" href="#location">
+                    <img src="./public/static/map-icon.svg" />
+                    <p id="invite-to-party-label-idx">Mời dự tiệc</p>
+                </a>
+            </div>
 
         </section>
 
@@ -1401,7 +1373,7 @@
                          "counter-hour-label-idx": "Hours",
                          "counter-minute-label-idx": "Minutes",
                          "counter-second-label-idx": "Seconds",
-                         "groom-and-bridal-label-idx": "Anh Nguen & Lieu Le",
+                         "groom-and-bridal-label-idx": "Anh Nguyen & Lieu Le",
                          "become-mate-label-idx": "We have become husband and wife",
                          "watch-wedding-photo-label-idx": "Wedding photos",
                          "invite-to-party-label-idx": "To party",
@@ -1452,7 +1424,10 @@
                 lang = localStorage.getItem("lang") || document.documentElement.lang;
                 dict = dictionary[lang];
                 for (var key in dict) {
-                    document.getElementById(key).innerText = dict[key];
+                    element = document.getElementById(key);
+                    if (element) {
+                        document.getElementById(key).innerText = dict[key];
+                    }
                 }
             }
 
