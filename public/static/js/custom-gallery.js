@@ -15,6 +15,12 @@ class CustomGallery {
             wheelToZoom: true,
             closeOnVerticalDrag: true,
             lazyLoadOffset: 100,
+            // Swipe options
+            swipeToNavigate: true,
+            swipeThreshold: 40,
+            fastSwipeThreshold: 25,
+            fastSwipeTime: 250,
+            showSwipeIndicators: true,
             ...options
         };
 
@@ -31,6 +37,9 @@ class CustomGallery {
         this.intersectionObserver = null;
         this.galleries = [];
         this.originalViewport = null;
+        this.originalScrollPosition = 0;
+        this.clickedElement = null;
+        this.imageCache = new Map(); // Cache for loaded images
 
         this.init();
     }
@@ -143,7 +152,7 @@ class CustomGallery {
                     // Add click event
                     item.addEventListener('click', (e) => {
                         e.preventDefault();
-                        this.open(galleryItems, itemIndex);
+                        this.open(galleryItems, itemIndex, item);
                     });
                 }
             });
@@ -321,6 +330,8 @@ class CustomGallery {
     }
 
     setupTouchEvents() {
+        if (!this.options.swipeToNavigate) return;
+
         let startX = 0;
         let startY = 0;
         let currentX = 0;
@@ -328,6 +339,15 @@ class CustomGallery {
         let touchStartTime = 0;
         let isSwiping = false;
         let isDragging = false;
+        let swipeDirection = null;
+        let initialDistance = 0;
+        let currentDistance = 0;
+
+        // Use configurable thresholds
+        const SWIPE_THRESHOLD = this.options.swipeThreshold;
+        const FAST_SWIPE_THRESHOLD = this.options.fastSwipeThreshold;
+        const FAST_SWIPE_TIME = this.options.fastSwipeTime;
+        const VERTICAL_CLOSE_THRESHOLD = 80;
 
         const handleTouchStart = (e) => {
             const touch = e.touches[0];
@@ -338,6 +358,9 @@ class CustomGallery {
             touchStartTime = Date.now();
             isSwiping = false;
             isDragging = false;
+            swipeDirection = null;
+            initialDistance = 0;
+            currentDistance = 0;
 
             this.lightboxContent.style.transition = 'none';
         };
@@ -354,26 +377,47 @@ class CustomGallery {
             const absX = Math.abs(deltaX);
             const absY = Math.abs(deltaY);
 
-            // Determine if this is a swipe or drag
-            if (absX > 20 || absY > 20) {
+            // Determine swipe direction if not already set
+            if (!swipeDirection && (absX > 10 || absY > 10)) {
                 if (absX > absY) {
-                    // Horizontal swipe
-                    isSwiping = true;
-                    e.preventDefault();
-
-                    // Visual feedback for swipe
-                    const opacity = Math.max(0.3, 1 - absX / 300);
-                    this.lightboxContent.style.transform = `translateX(${deltaX}px)`;
-                    this.lightbox.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.9})`;
-                } else if (this.options.closeOnVerticalDrag) {
-                    // Vertical drag to close
-                    isDragging = true;
-                    e.preventDefault();
-
-                    const opacity = Math.max(0.3, 1 - absY / 300);
-                    this.lightboxContent.style.transform = `translateY(${deltaY}px)`;
-                    this.lightbox.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.9})`;
+                    swipeDirection = 'horizontal';
+                } else {
+                    swipeDirection = 'vertical';
                 }
+            }
+
+            // Handle horizontal swipe (navigation)
+            if (swipeDirection === 'horizontal') {
+                isSwiping = true;
+                e.preventDefault();
+
+                // Calculate swipe progress (0 to 1)
+                const maxSwipeDistance = window.innerWidth * 0.3; // 30% of screen width
+                const progress = Math.min(absX / maxSwipeDistance, 1);
+
+                // Visual feedback with scaling and opacity
+                const scale = 1 - (progress * 0.1); // Slight scale down
+                const opacity = Math.max(0.4, 1 - progress * 0.4);
+                const translateX = deltaX * 0.8; // Damped movement
+
+                this.lightboxContent.style.transform = `translateX(${translateX}px) scale(${scale})`;
+                this.lightbox.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.9})`;
+
+                // Add visual indicator for next/prev image
+                this.showSwipeIndicator(deltaX > 0 ? 'prev' : 'next', progress);
+
+            } else if (swipeDirection === 'vertical' && this.options.closeOnVerticalDrag) {
+                // Vertical drag to close
+                isDragging = true;
+                e.preventDefault();
+
+                const maxDragDistance = window.innerHeight * 0.25; // 25% of screen height
+                const progress = Math.min(absY / maxDragDistance, 1);
+                const opacity = Math.max(0.2, 1 - progress * 0.6);
+                const scale = Math.max(0.8, 1 - progress * 0.2);
+
+                this.lightboxContent.style.transform = `translateY(${deltaY}px) scale(${scale})`;
+                this.lightbox.style.backgroundColor = `rgba(0, 0, 0, ${opacity * 0.9})`;
             }
         };
 
@@ -383,36 +427,54 @@ class CustomGallery {
             const absX = Math.abs(deltaX);
             const absY = Math.abs(deltaY);
             const touchTime = Date.now() - touchStartTime;
+            const isFastSwipe = touchTime < FAST_SWIPE_TIME;
 
             this.lightboxContent.style.transition = '';
+            this.hideSwipeIndicator();
 
             if (isSwiping) {
                 // Handle horizontal swipe for navigation
-                if (absX > 50 || (absX > 30 && touchTime < 300)) {
+                const shouldNavigate = absX > SWIPE_THRESHOLD || (isFastSwipe && absX > FAST_SWIPE_THRESHOLD);
+
+                if (shouldNavigate) {
                     if (deltaX > 0) {
                         this.prev();
                     } else {
                         this.next();
                     }
                 } else {
-                    // Reset position
+                    // Reset position with smooth animation
+                    this.lightboxContent.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
                     this.lightboxContent.style.transform = '';
                     this.lightbox.style.backgroundColor = '';
+
+                    // Remove transition after animation
+                    setTimeout(() => {
+                        this.lightboxContent.style.transition = '';
+                    }, 300);
                 }
             } else if (isDragging) {
                 // Handle vertical drag to close
-                if (absY > 100 || (absY > 50 && touchTime < 300)) {
+                const shouldClose = absY > VERTICAL_CLOSE_THRESHOLD || (isFastSwipe && absY > 40);
+
+                if (shouldClose) {
                     this.close();
                 } else {
-                    // Reset position
+                    // Reset position with smooth animation
+                    this.lightboxContent.style.transition = 'transform 0.3s ease';
                     this.lightboxContent.style.transform = '';
                     this.lightbox.style.backgroundColor = '';
+
+                    setTimeout(() => {
+                        this.lightboxContent.style.transition = '';
+                    }, 300);
                 }
             }
 
             // Reset variables
             isSwiping = false;
             isDragging = false;
+            swipeDirection = null;
         };
 
         // Add touch event listeners
@@ -420,7 +482,7 @@ class CustomGallery {
         this.lightboxContent.addEventListener('touchmove', handleTouchMove, { passive: false });
         this.lightboxContent.addEventListener('touchend', handleTouchEnd, { passive: false });
 
-        // Mouse events for desktop
+        // Mouse events for desktop drag
         this.lightboxContent.addEventListener('mousedown', this.handleStart.bind(this));
         document.addEventListener('mousemove', this.handleMove.bind(this));
         document.addEventListener('mouseup', this.handleEnd.bind(this));
@@ -466,23 +528,27 @@ class CustomGallery {
         }
     }
 
-    open(items, index = 0) {
+    open(items, index = 0, clickedElement = null) {
         console.log('Opening gallery with', items.length, 'items at index', index);
 
         this.items = items;
         this.currentIndex = index;
         this.isOpen = true;
+        this.clickedElement = clickedElement;
 
         if (!this.lightbox) {
             console.error('Lightbox not found when trying to open');
             return;
         }
 
-        // Prevent body scrolling on mobile
+        // Store current scroll position before fixing body
+        this.originalScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Prevent body scrolling on mobile while preserving scroll position
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
+        document.body.style.top = `-${this.originalScrollPosition}px`;
         document.body.style.width = '100%';
-        document.body.style.height = '100%';
 
         // Add mobile viewport handling
         const viewport = document.querySelector('meta[name="viewport"]');
@@ -503,11 +569,18 @@ class CustomGallery {
         this.isOpen = false;
         this.lightbox.classList.remove('active');
 
+        // Get the current scroll position from the body's top style
+        const currentScrollPosition = Math.abs(parseInt(document.body.style.top) || 0);
+
         // Restore body scrolling
         document.body.style.overflow = '';
         document.body.style.position = '';
+        document.body.style.top = '';
         document.body.style.width = '';
         document.body.style.height = '';
+
+        // Restore to the exact position without any jumping
+        window.scrollTo(0, currentScrollPosition);
 
         // Restore original viewport
         if (this.originalViewport) {
@@ -522,47 +595,155 @@ class CustomGallery {
         // Reset transforms
         this.lightboxContent.style.transform = '';
         this.lightbox.style.backgroundColor = '';
+
+        // Clear the clicked element reference
+        this.clickedElement = null;
     }
 
     prev() {
         console.log('Previous image');
         if (!this.options.loop && this.currentIndex === 0) return;
 
-        this.currentIndex = this.currentIndex === 0 ? this.items.length - 1 : this.currentIndex - 1;
-        this.loadCurrentImage();
-        this.updateCounter();
-        this.updateNavigation();
-        this.resetZoom();
+        // Add smooth transition effect
+        this.lightboxContent.style.transition = 'transform 0.3s ease';
+        this.lightboxContent.style.transform = 'translateX(100px)';
+
+        setTimeout(() => {
+            this.currentIndex = this.currentIndex === 0 ? this.items.length - 1 : this.currentIndex - 1;
+            this.loadCurrentImage();
+            this.updateCounter();
+            this.updateNavigation();
+            this.resetZoom();
+
+            // Reset transform after loading - reduce delay since images are cached
+            this.lightboxContent.style.transform = 'translateX(-100px)';
+            setTimeout(() => {
+                this.lightboxContent.style.transform = '';
+                setTimeout(() => {
+                    this.lightboxContent.style.transition = '';
+                }, 200); // Reduced from 300ms
+            }, 30); // Reduced from 50ms
+        }, 100); // Reduced from 150ms
     }
 
     next() {
         console.log('Next image');
         if (!this.options.loop && this.currentIndex === this.items.length - 1) return;
 
-        this.currentIndex = this.currentIndex === this.items.length - 1 ? 0 : this.currentIndex + 1;
-        this.loadCurrentImage();
-        this.updateCounter();
-        this.updateNavigation();
-        this.resetZoom();
+        // Add smooth transition effect
+        this.lightboxContent.style.transition = 'transform 0.3s ease';
+        this.lightboxContent.style.transform = 'translateX(-100px)';
+
+        setTimeout(() => {
+            this.currentIndex = this.currentIndex === this.items.length - 1 ? 0 : this.currentIndex + 1;
+            this.loadCurrentImage();
+            this.updateCounter();
+            this.updateNavigation();
+            this.resetZoom();
+
+            // Reset transform after loading - reduce delay since images are cached
+            this.lightboxContent.style.transform = 'translateX(100px)';
+            setTimeout(() => {
+                this.lightboxContent.style.transform = '';
+                setTimeout(() => {
+                    this.lightboxContent.style.transition = '';
+                }, 200); // Reduced from 300ms
+            }, 30); // Reduced from 50ms
+        }, 100); // Reduced from 150ms
     }
 
     loadCurrentImage() {
         const currentItem = this.items[this.currentIndex];
+        console.log('Loading image:', currentItem.src);
+        console.log('Cache has image:', this.imageCache.has(currentItem.src));
+        console.log('Cache size:', this.imageCache.size);
 
+        // Check if image is already cached
+        if (this.imageCache.has(currentItem.src)) {
+            console.log('Loading from cache (no network request):', currentItem.src);
+            const cachedData = this.imageCache.get(currentItem.src);
+
+            // Use the cached image source directly
+            this.lightboxImage.src = cachedData.src;
+            this.lightboxImage.style.opacity = '1';
+            this.lightboxLoader.style.display = 'none';
+
+            // Preload adjacent images
+            this.preloadAdjacentImages();
+            return;
+        }
+
+        // Show loader for new images
+        console.log('Loading new image (network request):', currentItem.src);
         this.lightboxLoader.style.display = 'block';
         this.lightboxImage.style.opacity = '0';
 
         const img = new Image();
         img.onload = () => {
-            this.lightboxImage.src = currentItem.src;
+            // Cache the loaded image (simple caching without CORS requirements)
+            this.imageCache.set(currentItem.src, {
+                img: img,
+                src: currentItem.src,
+                loaded: true
+            });
+
+            console.log('Cached new image:', currentItem.src, 'Cache size now:', this.imageCache.size);
+
+            this.lightboxImage.src = img.src;
             this.lightboxImage.style.opacity = '1';
             this.lightboxLoader.style.display = 'none';
+
+            // Preload adjacent images after current image loads
+            this.preloadAdjacentImages();
         };
         img.onerror = () => {
             this.lightboxLoader.style.display = 'none';
             console.error('Failed to load image:', currentItem.src);
         };
         img.src = currentItem.src;
+    }
+
+    preloadAdjacentImages() {
+        // Preload next and previous images for smooth navigation
+        const preloadIndexes = [];
+
+        // Add next image
+        if (this.currentIndex < this.items.length - 1) {
+            preloadIndexes.push(this.currentIndex + 1);
+        } else if (this.options.loop && this.items.length > 1) {
+            preloadIndexes.push(0);
+        }
+
+        // Add previous image
+        if (this.currentIndex > 0) {
+            preloadIndexes.push(this.currentIndex - 1);
+        } else if (this.options.loop && this.items.length > 1) {
+            preloadIndexes.push(this.items.length - 1);
+        }
+
+        // Preload the images
+        preloadIndexes.forEach(index => {
+            const item = this.items[index];
+            if (item && !this.imageCache.has(item.src)) {
+                console.log('Preloading image:', item.src);
+                const img = new Image();
+                img.onload = () => {
+                    // Simple caching without CORS requirements
+                    this.imageCache.set(item.src, {
+                        img: img,
+                        src: item.src,
+                        loaded: true
+                    });
+                    console.log('Preloaded image:', item.src, 'Cache size now:', this.imageCache.size);
+                };
+                img.onerror = () => {
+                    console.warn('Failed to preload image:', item.src);
+                };
+                img.src = item.src;
+            } else if (item) {
+                console.log('Image already cached:', item.src);
+            }
+        });
     }
 
     updateCounter() {
@@ -612,6 +793,61 @@ class CustomGallery {
         zoomOutBtn.disabled = this.zoomLevel <= this.minZoom;
     }
 
+    showSwipeIndicator(direction, progress) {
+        if (!this.options.showSwipeIndicators) return;
+
+        let indicator = this.lightbox.querySelector('.swipe-indicator');
+
+        if (!indicator) {
+            indicator = document.createElement('div');
+            indicator.className = 'swipe-indicator';
+            this.lightbox.appendChild(indicator);
+        }
+
+        const opacity = Math.min(progress * 2, 1);
+        const isNext = direction === 'next';
+
+        // Check if navigation is possible in this direction
+        const canNavigate = this.options.loop ||
+            (isNext && this.currentIndex < this.items.length - 1) ||
+            (!isNext && this.currentIndex > 0);
+
+        if (!canNavigate) {
+            indicator.style.opacity = '0';
+            return;
+        }
+
+        const nextIndex = isNext ?
+            (this.currentIndex === this.items.length - 1 ? 0 : this.currentIndex + 1) :
+            (this.currentIndex === 0 ? this.items.length - 1 : this.currentIndex - 1);
+
+        indicator.innerHTML = `
+            <div class="swipe-arrow ${direction}">
+                ${isNext ? '→' : '←'}
+            </div>
+            <div class="swipe-text">
+                ${isNext ? 'Next' : 'Previous'}
+                ${this.items.length > 1 ? `(${nextIndex + 1}/${this.items.length})` : ''}
+            </div>
+        `;
+
+        indicator.style.opacity = opacity;
+        indicator.style.left = isNext ? '70%' : '30%';
+        indicator.style.transform = 'translateX(-50%)';
+    }
+
+    hideSwipeIndicator() {
+        const indicator = this.lightbox.querySelector('.swipe-indicator');
+        if (indicator) {
+            indicator.style.opacity = '0';
+            setTimeout(() => {
+                if (indicator.parentNode) {
+                    indicator.parentNode.removeChild(indicator);
+                }
+            }, 200);
+        }
+    }
+
     // Public method to refresh lazy loading (useful if content is added dynamically)
     refreshLazyLoading() {
         this.setupLazyLoading();
@@ -644,7 +880,7 @@ class CustomGallery {
                 // Add click event
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    this.open(galleryItems, itemIndex);
+                    this.open(galleryItems, itemIndex, item);
                 });
 
                 // Setup lazy loading for new images
@@ -667,6 +903,9 @@ class CustomGallery {
         if (this.lightbox) {
             this.lightbox.remove();
         }
+
+        // Clear image cache
+        this.imageCache.clear();
 
         // Remove event listeners
         this.galleries.forEach(gallery => {

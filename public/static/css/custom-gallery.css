@@ -488,6 +488,76 @@
     }
 }
 
+/* Swipe Indicators */
+.swipe-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 10001;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 80px;
+    max-width: 120px;
+}
+
+.swipe-arrow {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.swipe-arrow.next {
+    color: #4CAF50;
+}
+
+.swipe-arrow.prev {
+    color: #2196F3;
+}
+
+.swipe-text {
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+/* Enhanced touch feedback */
+.lightbox-content {
+    transition: transform 0.1s ease-out;
+}
+
+.lightbox-content.swiping {
+    transition: none;
+}
+
+/* Mobile swipe enhancements */
+@media (max-width: 768px) {
+    .swipe-indicator {
+        padding: 10px 16px;
+        min-width: 70px;
+        max-width: 100px;
+    }
+
+    .swipe-arrow {
+        font-size: 20px;
+    }
+
+    .swipe-text {
+        font-size: 11px;
+    }
+}
+
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     .photoset img.error {
