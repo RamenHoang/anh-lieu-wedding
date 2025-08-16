@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Anh & Liễu</title>
         <link rel="stylesheet" href="./public/static/css/style_html.css" />
-        <link rel="stylesheet" href="./public/static/css/photoswipe.css" />
+        <link rel="stylesheet" href="./public/static/css/custom-gallery.css" />
         <link rel="icon" type="image/png" href="./public/static/wedding-festival.png" />
         <link rel="stylesheet" href="./public/static/css/background-audio.css" />
         <link rel="stylesheet" href="./public/static/css/wishes_html.css" />
@@ -1309,29 +1309,25 @@
         <script
             type="text/javascript"
             charset="UTF-8"
-            src="./public/static/js/photoswipe.umd.min.js"
-        ></script>
-        <script
-            type="text/javascript"
-            charset="UTF-8"
-            src="./public/static/js/photoswipe-lightbox.umd.min.js"
+            src="./public/static/js/custom-gallery.js"
         ></script>
         <script type="text/javascript">
-            // lightbox
-            var lightbox = new PhotoSwipeLightbox({
-                gallery: ".photoset",
-                children: "a",
-                pswpModule: PhotoSwipe,
-                loop: true,
-                counter: true,
-                zoom: true,
-                escKey: true,
-                wheelToZoom: true,
-                allowPanToNext: true,
-                closeOnVerticalDrag: true,
-                arrowKeys: false,
+            // Custom Gallery initialization
+            document.addEventListener('DOMContentLoaded', function() {
+                window.customGallery = new CustomGallery({
+                    gallery: ".photoset",
+                    children: "a",
+                    loop: true,
+                    counter: true,
+                    zoom: true,
+                    escKey: true,
+                    wheelToZoom: true,
+                    closeOnVerticalDrag: true,
+                    lazyLoadOffset: 100
+                });
+
+                console.log('Custom gallery initialized');
             });
-            lightbox.init();
 
             var weddingDatetime = "2023/02/06 11:00";
             var audioPath = "./public/audio/background_audio.mp3";

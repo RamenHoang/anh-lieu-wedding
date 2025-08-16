@@ -124,7 +124,13 @@ function getAbsoluteTop(elem) {
         var width = (exactWidth * ratio) / totalRatio;
         $image.width = width;
         $image.height = width / ratio;
-        $image.src = $image.getAttribute("data-src");
+
+        // Only set src if data-src exists and image is not already loaded
+        var dataSrc = $image.getAttribute("data-src");
+        if (dataSrc && (!$image.src || $image.src.includes("placeholder"))) {
+          // Let the custom gallery handle lazy loading
+          // $image.src = dataSrc;
+        }
 
         var parent = $image.parentNode;
         parent.dataset.pswpWidth = wholeWidth;
